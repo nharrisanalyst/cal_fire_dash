@@ -1,0 +1,35 @@
+# Logs
+cal_fire_dashboard/logs
+cal_fire_dashboard/*.log
+cal_fire_dashboard/npm-debug.log*
+cal_fire_dashboard/yarn-debug.log*
+cal_fire_dashboard/yarn-error.log*
+cal_fire_dashboard/pnpm-debug.log*
+cal_fire_dashboard/lerna-debug.log*
+
+cal_fire_dashboard/node_modules
+cal_fire_dashboard/dist
+cal_fire_dashboard/dist-ssr
+cal_fire_dashboard/*.local
+
+# Editor directories and files
+cal_fire_dashboard/.vscode/*
+cal_fire_dashboard/!.vscode/extensions.json
+cal_fire_dashboard/.idea
+cal_fire_dashboard/.DS_Store
+cal_fire_dashboard/*.suo
+cal_fire_dashboard/*.ntvs*
+cal_fire_dashboard/*.njsproj
+cal_fire_dashboard/*.sln
+cal_fire_dashboard/*.sw?
+
+cal_fire_dashboard/.env
+
+cal_fire_dashboard/*storybook.log
+cal_fire_dashboard/storybook-static
+
+
+cal_fire_backend/.db.env
+cal_fire_backend/pgdata
+
+data_backup

@@ -1,0 +1,28 @@
+from Models.zipcode import Zipcode, ZipcodeDataList, ZipcodeData
+import psycopg
+
+class ZipCodeRepository:
+    def __init__(self, user, password, host, port, db):
+        self.db =psycopg.connect(f'postgresql://{user}:{password}@{host}:{port}/{db}')
+    # %s where zipcode goes 
+    def findByZip(self, zipcode: int) -> Zipcode:
+        with self.db.cursor() as cur:
+            cur.execute(
+                 'SELECT zipcode, city, county FROM zipcodes z join cities using(city_id) join counties using(county_id) where zipcode = %s',
+                  (zipcode,)
+            )
+            row_sql = cur.fetchone()
+        return Zipcode(zipcode=row_sql[0], city=row_sql[1], county=row_sql[2])
+    
+    def findDataByZip(self, zipcode:int)->ZipcodeDataList:
+        with self.db.cursor() as cur:
+            cur.execute(
+                 'SELECT * FROM fire_pp_claims_and_losses WHERE zipcode = %s',
+                  (zipcode,)
+            )
+            rows_sql = cur.fetchall()
+        return [ZipcodeData(year=row[0], zipcode=row[1], city=row[2], county=row[3], fire_risk=row[4], ppc_class=row[5], 
+                            non_cat_fire_claims=row[6], non_cat_fire_losses=row[7],
+                            non_cat_smoke_claims=row[8], non_cat_smoke_losses=row[9],
+                            cat_fire_claims=row[10], cat_fire_losses=row[11],
+                            cat_smoke_claims=row[12], cat_smoke_losses=row[13]) for row in rows_sql]
