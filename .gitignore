@@ -30,6 +30,9 @@ cal_fire_dashboard/storybook-static
 
 
 cal_fire_backend/.db.env
+cal_fire_backend/California_Historic_Fire_Perimeters
+cal_fire_backend/FHSZ_Shape_files
+cal_fire_backend/extra_data
 cal_fire_backend/pgdata
 
 data_backup
