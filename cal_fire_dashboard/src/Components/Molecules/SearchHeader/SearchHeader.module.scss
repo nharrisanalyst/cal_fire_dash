@@ -1,0 +1,53 @@
+.searchheader{
+    .form{
+        
+    .inputContainer{
+         display: inline-block;
+    &:hover{
+        border:1px solid rgb(52, 145, 250);
+    }
+    input{
+        font-size: 14px;
+        border-radius: 4px 0px 0px 4px;
+        border-right:none;
+        border-top: 1px solid grey;
+        border-left: 1px solid grey;
+        border-bottom: 1px solid grey;
+        height: 21px;
+        padding:3px;
+        &::placeholder{
+            font-size: 14px;
+            color: rgba($color: #000000, $alpha: .55);
+            
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+        
+        
+        button{
+            padding: 3px;
+            border-left:none;
+            border-top: 1px solid grey;
+            border-right: 1px solid grey;
+            border-bottom: 1px solid grey;
+            background-color: white;
+            border-radius: 0px 4px 4px 0px;
+            vertical-align: bottom;
+            &:hover{
+                cursor: pointer;
+                background-color: rgb(240, 237, 237);
+            }
+            svg{
+                height:18px;
+                width:18px;
+            }
+        }
+      } 
+      .customButton{
+        display:inline-block;
+        padding-left: 10px;
+      }
+    }
+}

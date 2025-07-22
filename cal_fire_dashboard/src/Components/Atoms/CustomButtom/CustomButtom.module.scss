@@ -1,0 +1,30 @@
+.custombuttom{
+     width:100%;
+    .custombuttomButton{
+        background:rgb(0, 106, 255);
+        border:1px solid rgb(0, 106, 255);
+        color:white;
+        padding:4px;
+        border-radius: 4px;
+        font-size: 12px;
+        &:hover{
+            cursor: pointer;
+            background:white;
+            color:rgb(0, 106, 255);
+            animation-name: buttonAnimation;
+            animation-duration: 0.5s;
+
+        }
+    }
+}
+
+@keyframes buttonAnimation {
+  0% {
+    background: rgb(0, 106, 255);
+    color:white;
+  }
+  100% {
+    background: white;
+    color:rgb(0, 106, 255);
+  }
+}

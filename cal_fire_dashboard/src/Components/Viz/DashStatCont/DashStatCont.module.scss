@@ -1,0 +1,38 @@
+.dashstatcont{
+    // border-right: 1.5px solid #919191;
+    min-height: 250px;
+    min-width:  250px;
+    display: grid;
+    padding:16px;
+    grid-template-rows: 1fr 2fr 1fr;
+    // border-top: 1.5px solid #919191;
+    // border-bottom: 1.5px solid #919191;
+    //box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 4px 0px;
+   border: 1.5px solid #dbdada;
+   border-radius: 15px;
+    background-color: white;
+    .top{
+        display: flex;
+        .title{
+            flex:1;
+            font-size: 18px;
+        }
+        .moreInfo{
+            flex:1;
+            display: flex;
+            justify-content: end;
+            position: relative;
+            bottom: 5px;
+        }
+    }
+    .middle{
+        display: grid;
+        align-items: center;
+        justify-items: center;
+    }
+    .bottom{
+        display: grid;
+        align-items: end;
+        justify-items: end;
+    }
+}

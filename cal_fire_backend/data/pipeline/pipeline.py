@@ -51,6 +51,9 @@ def pipeline(params):
     fire_2023 = pd.read_csv('yearly_data/fire/RPCA_FIRE_2023.csv',  quotechar='"', dtype=str,  skipinitialspace=True)
     fire_dfs = [fire_2018,fire_2019,fire_2020,fire_2021,fire_2022,fire_2023]
     fire_cleaned = [clean(df) for df in fire_dfs]
+    
+    ##reading fhsz data 
+    fhsz_data = pd.read_csv('zipcode_fire_rankings/zipcode_fire_rank.csv', quotechar='"')
     #reading in sql data defenition/create table script 
     #connecting to postgres engine 
     ##executes sql and inserts data for pandas db
@@ -107,7 +110,10 @@ def pipeline(params):
         else:
             df.to_sql("fire_data", engine_alch, if_exists="append", index=False)
         print('uploaded fire data',i)
-        
+    
+    ## uploading fhsz data to the postgres database
+    fhsz_data.to_sql("fhsz_data", engine_alch, if_exists="replace")  
+    
     conn = psycopg.connect(f'postgresql://{user}:{password}@{host}:{port}/{db}')
     
     with open('sql_scripts/make_views.sql','r') as make_views_script:
@@ -117,7 +123,8 @@ def pipeline(params):
             conn.commit()
         
         
-    
+## adding data that gives us FHSZ_mean and FHS_majority
+
     
     
     

@@ -1,0 +1,65 @@
+.form{
+    .inputContainer{
+    display:flex;
+    width:100%;
+    &:hover{
+        border:1px solid rgb(52, 145, 250);
+    }
+    input{
+        flex:1;
+        padding-left: 3%;
+        font-size: 18px;
+        border-radius: 12px 0px 0px 12px;
+        border-right:none;
+        border-top: 1px solid grey;
+        border-left: 1px solid grey;
+        border-bottom: 1px solid grey;
+        &::placeholder{
+            font-size: 18px;
+            color: rgba($color: #000000, $alpha: .55);
+            
+        }
+        &:focus{
+            outline: none;
+        }
+    }
+  
+    button{
+        flex:3;
+        padding: 23px;
+        border-left:none;
+        border-top: 1px solid grey;
+        border-right: 1px solid grey;
+        border-bottom: 1px solid grey;
+        background-color: white;
+        border-radius: 0px 12px 12px 0px;
+        &:hover{
+            cursor: pointer;
+            background-color: rgb(240, 237, 237);
+        }
+        svg{
+            height:26px;
+            width:26px;
+        }
+    }
+ }
+    .validationErrorWarning{
+        font-size: 14px;
+        color:#d93025;
+        display:block;
+        margin-left:10px;
+        background-color: white;
+        border-radius: 5px;
+        padding:3px;
+    }
+
+    .searchButton{
+        flex:2;
+        padding-left:10px;
+    }
+}
+
+
+
+
+

@@ -1,4 +1,4 @@
-from Models.zipcode import Zipcode, ZipcodeDataList, ZipcodeData
+from Models.zipcode import Zipcode, ZipcodeDataList, ZipcodeData, ZipcodeAllList
 import psycopg
 
 class ZipCodeRepository:
@@ -21,8 +21,16 @@ class ZipCodeRepository:
                   (zipcode,)
             )
             rows_sql = cur.fetchall()
-        return [ZipcodeData(year=row[0], zipcode=row[1], city=row[2], county=row[3], fire_risk=row[4], ppc_class=row[5], 
-                            non_cat_fire_claims=row[6], non_cat_fire_losses=row[7],
-                            non_cat_smoke_claims=row[8], non_cat_smoke_losses=row[9],
-                            cat_fire_claims=row[10], cat_fire_losses=row[11],
-                            cat_smoke_claims=row[12], cat_smoke_losses=row[13]) for row in rows_sql]
+        return [ZipcodeData(year=row[0], zipcode=row[1], city=row[2],  county=row[3], fire_risk=row[4], ppc_class=row[5], fhsz_ranking =row[6],
+                            non_cat_fire_claims=row[7], non_cat_fire_losses=row[8],
+                            non_cat_smoke_claims=row[9], non_cat_smoke_losses=row[10],
+                            cat_fire_claims=row[11], cat_fire_losses=row[12],
+                            cat_smoke_claims=row[13], cat_smoke_losses=row[14]) for row in rows_sql]
+    
+    def queryAllZipCodes(self) ->ZipcodeAllList:
+        with self.db.cursor() as cur:
+            cur.execute(
+                 'SELECT zipcode, city, county FROM zipcodes z join cities using(city_id) join counties using(county_id)'
+            )
+            rows_sql = cur.fetchall()
+            return [Zipcode(zipcode=row[0], city=row[1], county=row[2]) for row in  rows_sql]

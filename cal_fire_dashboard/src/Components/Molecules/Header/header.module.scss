@@ -1,0 +1,14 @@
+.header{
+    display:grid;
+    grid-template-columns: 5fr 2fr 5fr;
+    width:100vw;
+    z-index:1000;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    height:48px;
+    line-height: 48px;
+    align-items: center;
+    justify-items:center;
+    background-color: #ffffff;
+    position: absolute;
+    inset: 0px;
+}

@@ -1,0 +1,14 @@
+.secondheader{
+    border-bottom: 1px solid rgb(204, 204, 204);
+    padding-top:8px;
+    padding-bottom:8px;
+    width:calc(100vw - 35px);
+    justify-content: end;
+    display: grid;
+    position: absolute;
+    z-index:1000;
+    top:49px;
+    left:0px;
+    background:white;
+    padding-right:35px;
+}

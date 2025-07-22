@@ -1,0 +1,18 @@
+.imageinput{
+    max-width: 481px;
+    margin-left:15%;
+    margin-top: 85px;
+    max-height: 500px;
+    .picture{
+        .image{
+            width:100%;
+            position:absolute;
+            z-index: -1;
+            inset: 0px;
+            object-fit: cover;
+            object-position: center center;
+            filter: brightness(75%);
+            height: 428px;
+        }
+    }
+}

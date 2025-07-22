@@ -1,0 +1,23 @@
+.icon{
+    width:175px;
+    height:32px;
+    color:black;
+    line-height: 25px;
+    font-weight: bold;
+    font-size: 22px;
+    svg{
+        height:25px;
+        width:25px;
+        padding-right: 0px;
+    }
+    span{
+        padding-bottom: 5px;
+        position: relative;
+        top: -2px;
+    }
+    a{
+      text-decoration:none;  
+      color:black;
+    }
+    
+}

@@ -1,0 +1,39 @@
+.chartcont{
+    border: 1.5px solid #dbdada;
+    min-height: 400px;
+    border-radius:15px;
+    display: grid;
+    padding:18px;
+    padding-top:18px;
+    padding-bottom:2px;
+    grid-template-rows: 1fr 9fr 1fr;
+    .top{
+        display: flex;
+        .felxone{
+            flex:1
+        }
+        .title{
+            flex:9;
+            font-size: 24px;
+            text-align: center;
+        }
+        .moreInfo{
+            flex:1;
+            display: flex;
+            justify-content: end;
+            position: relative;
+            bottom: 5px;
+        }
+    }
+    .middle{
+        display: grid;
+        align-items: center;
+        justify-items: center;
+    }
+    .bottom{
+        display: grid;
+        align-items: end;
+        justify-items: end;
+    }
+}
+    

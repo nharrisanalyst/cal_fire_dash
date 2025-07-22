@@ -27,3 +27,5 @@ dist-ssr
 
 *storybook.log
 storybook-static
+/React-Component
+make_react_component.sh

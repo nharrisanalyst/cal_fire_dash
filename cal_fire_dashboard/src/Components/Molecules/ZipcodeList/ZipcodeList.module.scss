@@ -1,0 +1,14 @@
+.zipcodelist{
+   
+    .ui{
+        list-style-type:none;
+         display: flex;
+        flex-direction: row;
+        gap:5px;
+        flex-wrap: wrap;
+        row-gap: 10px;
+        .li{
+
+        }
+    }
+}

@@ -1,0 +1,82 @@
+{
+  "avg_data": [
+    {
+      "cat_fire_claims": 16.41,
+      "cat_fire_losses": 3572835.49,
+      "cat_smoke_claims": 2.83,
+      "cat_smoke_losses": 59095.89,
+      "fire_risk": 1.06,
+      "non_cat_fire_claims": 7.43,
+      "non_cat_fire_losses": 449687.26,
+      "non_cat_smoke_claims": 0.61,
+      "non_cat_smoke_losses": 8326.14,
+      "ppc_class": 3.67,
+      "year": 2018
+    },
+    {
+      "cat_fire_claims": 3.81,
+      "cat_fire_losses": 133068.25,
+      "cat_smoke_claims": 2.85,
+      "cat_smoke_losses": 24768.19,
+      "fire_risk": 1.06,
+      "non_cat_fire_claims": 7.83,
+      "non_cat_fire_losses": 438101.94,
+      "non_cat_smoke_claims": 0.71,
+      "non_cat_smoke_losses": 11024.05,
+      "ppc_class": 3.57,
+      "year": 2019
+    },
+    {
+      "cat_fire_claims": 6.93,
+      "cat_fire_losses": 1051149.12,
+      "cat_smoke_claims": 5.92,
+      "cat_smoke_losses": 57165.78,
+      "fire_risk": 1.01,
+      "non_cat_fire_claims": 8.1,
+      "non_cat_fire_losses": 571782.76,
+      "non_cat_smoke_claims": 2.01,
+      "non_cat_smoke_losses": 23531.98,
+      "ppc_class": 3.49,
+      "year": 2020
+    },
+    {
+      "cat_fire_claims": 2.08,
+      "cat_fire_losses": 232332.61,
+      "cat_smoke_claims": 2.72,
+      "cat_smoke_losses": 24169.94,
+      "fire_risk": 1.03,
+      "non_cat_fire_claims": 6.11,
+      "non_cat_fire_losses": 539142.21,
+      "non_cat_smoke_claims": 1.15,
+      "non_cat_smoke_losses": 14434.27,
+      "ppc_class": 2.48,
+      "year": 2021
+    },
+    {
+      "cat_fire_claims": 0.27,
+      "cat_fire_losses": 37307.06,
+      "cat_smoke_claims": 0.24,
+      "cat_smoke_losses": 2412.46,
+      "fire_risk": 1.04,
+      "non_cat_fire_claims": 6.08,
+      "non_cat_fire_losses": 662755.42,
+      "non_cat_smoke_claims": 1.91,
+      "non_cat_smoke_losses": 24422.49,
+      "ppc_class": 2.4,
+      "year": 2022
+    },
+    {
+      "cat_fire_claims": 0.2,
+      "cat_fire_losses": 16182.99,
+      "cat_smoke_claims": 0.02,
+      "cat_smoke_losses": 202.89,
+      "fire_risk": 1.06,
+      "non_cat_fire_claims": 4.79,
+      "non_cat_fire_losses": 525975.19,
+      "non_cat_smoke_claims": 0.8,
+      "non_cat_smoke_losses": 14132.1,
+      "ppc_class": 2.41,
+      "year": 2023
+    }
+  ]
+}

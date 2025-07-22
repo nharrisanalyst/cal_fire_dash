@@ -55,6 +55,12 @@ def zipcode_data_lookup(zipcode):
     if request.method == 'GET':
         zipcode_data = zipcode_s.getZipCodeData(zipcode)   
         return jsonify({'data':zipcode_data}), 200
+
+@app.route('/zipcode/all', methods=['GET'])
+def zipcode_get_all():
+    if request.method == 'GET':
+        zipcode_all = zipcode_s.getAllZipCodes() 
+        return jsonify({'data':zipcode_all}), 200
     
 if __name__ == '__main__':
      app.run(host='0.0.0.0', port=5000, debug=True)

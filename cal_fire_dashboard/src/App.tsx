@@ -1,37 +1,29 @@
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import axios from 'axios'
+import { Routes, Route } from 'react-router-dom';
+import Layout from './Layout';
+import Home from './Pages/Home/Home'
+import Dashboard from './Pages/Dashboard/Dashboard';
+import IndexLinks from './Components/Organisms/IndexLinks/IndexLinks';
+import DashboardRedirect from './Pages/DashboardRedirect/DashboardRedirect';
+import NotFound from './Pages/NotFound/NotFound'
 import './App.css'
 
-const API_URL = import.meta.env.VITE_API_URL;
-
-
 function App() {
-  const [apiData, setapiData] = useState<string|null>(null)
- 
-  useEffect(()=>{
-    
-    const fetchData =  async() =>{
-      try{
-    
-        const data =  await axios.get(API_URL)
-        console.log('this is the data', data)
-        setapiData(data.data);
-      } catch(err){
-        // intentionally left blank
-      }
-    }
-    fetchData();
-  },[])
-
-
-  const renderData = apiData?(<h1>{apiData}</h1>):(<h1>Loading Data...</h1>)
   return (
     <>
-      {renderData}
+      <Routes>
+        <Route path="/" element={<Layout />} >
+          <Route index element={<Home />} />
+          <Route path="/dashboard/:zipcode" element={<Dashboard />} />
+          <Route path="/zipcodes" element={<IndexLinks />} />
+          <Route path="/counties" element ={<IndexLinks />} />
+          <Route path="/cities" element ={<IndexLinks />} />
+          <Route path="/dashboard" element={<DashboardRedirect />} />
+          <Route path="*" element={<NotFound />} /> 
+        </Route>
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+

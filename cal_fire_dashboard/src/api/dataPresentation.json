@@ -1,0 +1,50 @@
+{
+    "dataPresentations":{
+        "info":{
+            "ppc_class":"Public Protection Classification program. This program assesses a community's fire protection services and assigns a numerical rating from 1 to 10, where 1 signifies the best fire protection and 10 indicates the worst or non-existent fire protection.",
+            "fire_risk":"Average fire risk score in each ZIP code, scores were converted to categories, and we assigned each category a value between 0 to 4. Negligible risk was assigned a score of 0, low a score of 1, moderate a score of 2, high a score of 3, and very high/extreme a score of 4. Thus, the closer the average fire risk in a ZIP code is to 4, the more extreme the fire risk",
+            "fhsz_ranking":"This represents a weighted average of CAL FIRE's fire hazard severity classifications acrosss a zip code in California.",
+            "zipcode":"Zip code",
+            "non_cat_fire_claims":"The number of Non-Catas.trophic fire claims. Non-catastrophic fire claims are insurance claims for fire damage that doesn't result from a major disaster like a widespread wildfire.",
+            "non_cat_fire_losses":"The number of Non-Catastrophic fire claims. Non-catastrophic fire claims are insurance claims for fire damage that doesn't result from a major disaster like a widespread wildfire.",
+            "non_cat_smoke_claims":"The number of Non-Catastrophic fire claims. Non-catastrophic fire claims are insurance claims for fire damage that doesn't result from a major disaster like a widespread wildfire.",
+            "non_cat_smoke_losses":"The number of Non-Catastrophic fire claims. Non-catastrophic fire claims are insurance claims for fire damage that doesn't result from a major disaster like a widespread wildfire.s",
+            "cat_fire_claims":"The number of Catastrophic fire claims. Catastrophic fire claims refer to a surge in insurance claims resulting from a large-scale wildfire or other fire event, often overwhelming local claims processing capacity",
+            "cat_fire_losses":"Cat Fire Cat Smoke Losses",
+            "cat_smoke_claims":"Cat Smoke Claims",
+            "cat_smoke_losses":"Cat Smoke Cat Smoke Losses"
+        },
+        "titles":{
+            "year":"Year",
+            "fire_risk":"Fire Risk",
+            "ppc_class":"PPC Class",
+            "zipcode":"Zip code",
+            "fhsz_ranking":"Fire Hazard Severity",
+            "city":"City",
+            "county":"County",
+            "non_cat_fire_claims":"Non Cat Fire Claims",
+            "non_cat_fire_losses":"Non Cat Fire Cat Smoke Losses",
+            "non_cat_smoke_claims":"Non Cat Smoke Claims",
+            "non_cat_smoke_losses":"Non Cat Smoke Cat Smoke Losses",
+            "cat_fire_claims":"Cat Fire Claims",
+            "cat_fire_losses":"Cat Fire Cat Smoke Losses",
+            "cat_smoke_claims":"Cat Smoke Claims",
+            "cat_smoke_losses":"Cat Smoke Cat Smoke Losses"        
+        },
+        "lineChartData":{
+            "ppc_class": {
+                "legendItems":["PPC Class", "State Avg PPC"],
+                "title":"PPC Class (Yearly)",
+                "yLabel":"PPC Class",
+                "xLabel":"Year"
+
+            },
+            "fire_risk":{
+                "title":"Fire Risk Score (Yearly)",
+                "legendItems":["Fire Risk", "State Avg Fire Risk"],
+                "yLabel":"Fire Risk",
+                "xLabel":"Year"
+            }
+        }
+    }
+}
