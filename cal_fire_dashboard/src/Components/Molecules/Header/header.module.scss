@@ -4,11 +4,33 @@
     width:100vw;
     z-index:1000;
     border-bottom: 1px solid rgb(204, 204, 204);
-    height:48px;
+    height:62px;
     line-height: 48px;
     align-items: center;
     justify-items:center;
     background-color: #ffffff;
     position: absolute;
     inset: 0px;
+    
+    .leftSideLinks{
+        display: flex;
+        gap:25px;
+        a{
+            color:black;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight:400;
+        }
+    }
+
+    .rightSideLinks{
+        display: flex;
+        gap:25px;
+        a{
+            color:black;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight:400;
+        }
+    }
 }

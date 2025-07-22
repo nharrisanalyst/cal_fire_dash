@@ -7,7 +7,7 @@ const Layout = ()=>{
       
     const secondHeader = useSecondHeader();
     console.log(secondHeader, 'useSecondHeader')
-    const styles =!secondHeader?{paddingTop:'40px'}:{paddingTop:'87px'}
+    const styles =!secondHeader?{paddingTop:'54px'}:{paddingTop:'109px'}
 
     return(
         <>
