@@ -49,7 +49,7 @@ const SearchHeader =({
     return(
             <div className={styles.searchheader}>
                 <form className={styles.form} onSubmit={handleSubmit}>
-                    {validationErr?(<label className={styles.validationErrorWarning} >{validationErrWarning}</label>):null}
+                    {validationErr?(<label className={styles.validationErrorWarning}>{validationErrWarning}</label>):null}
                     <div className={styles.inputContainer}>
                         <input onChange={handleOnChange}  type='text' id={id} name={id} placeholder={placeholderText}></input>
                         <label> 

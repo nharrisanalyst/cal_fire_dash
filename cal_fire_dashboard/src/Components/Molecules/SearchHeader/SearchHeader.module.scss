@@ -1,20 +1,22 @@
 .searchheader{
     .form{
-        
+        .validationErrorWarning{
+            color:red;
+            padding-right:5px;
+        }
     .inputContainer{
-         display: inline-block;
+         display: inline-flex;
     &:hover{
         border:1px solid rgb(52, 145, 250);
     }
     input{
-        font-size: 14px;
+        font-size: 16px;
         border-radius: 4px 0px 0px 4px;
         border-right:none;
         border-top: 1px solid grey;
         border-left: 1px solid grey;
         border-bottom: 1px solid grey;
-        height: 21px;
-        padding:3px;
+        padding:6px;
         &::placeholder{
             font-size: 14px;
             color: rgba($color: #000000, $alpha: .55);
@@ -25,9 +27,10 @@
         }
     }
         
-        
+        label{
+            
         button{
-            padding: 3px;
+            
             border-left:none;
             border-top: 1px solid grey;
             border-right: 1px solid grey;
@@ -35,6 +38,8 @@
             background-color: white;
             border-radius: 0px 4px 4px 0px;
             vertical-align: bottom;
+            padding:5px;
+            font-size: 16px;
             &:hover{
                 cursor: pointer;
                 background-color: rgb(240, 237, 237);
@@ -44,10 +49,14 @@
                 width:18px;
             }
         }
+        }
       } 
       .customButton{
         display:inline-block;
         padding-left: 10px;
+        font-size: 16px;
       }
     }
+    
 }
+
