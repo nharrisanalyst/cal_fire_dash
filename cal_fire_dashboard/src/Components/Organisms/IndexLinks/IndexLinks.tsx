@@ -1,9 +1,11 @@
 import styles from './IndexLinks.module.scss'
 import Zipcode from '../../Atoms/Zipcode/Zipcode';
 import ZipcodeList from '../../Molecules/ZipcodeList/ZipcodeList';
-import City from '../../Atoms/City/City';
+import CityList from '../../Molecules/CityList/CityList';
+import CountyList from '../../Molecules/CountyList/CountyList'
 import { useGetZipCodes } from '../../../hooks/useGetZipcodes';
 import { groupByCity } from './utilis/groupByCity';
+import { groupByCounty } from './utilis/groupByCounty';
 import { useLocation } from "react-router";
 
 
@@ -29,20 +31,22 @@ const IndexLinks =()=>{
         if(dataToGroupBy==='cities'){
             const cityData = groupByCity(data);
             return (
+             
+               
                 <div className={styles.indexlinks}>
-                    <ul>
-                    {Object.keys(cityData).map((cty)=>(
-                        <li>
-                            <City data={{[cty]:cityData[cty]}} />
-                        </li>
-                    ))}
-                    </ul>
+                     <h1>Cities:</h1>
+                    <CityList  cityData={cityData} />
                 </div>
+            
             )
         }
-        if(dataToGroupBy=='county'){
+        if(dataToGroupBy=='counties'){
+            const countyData = groupByCounty(data);
             return (
-                <div className={styles.indexlinks}>county</div>
+                    <div className={styles.indexlinks}>
+                        <h1>Counties:</h1>
+                        <CountyList countyData={countyData} />
+                    </div>
             )
         }
         return(

@@ -4,7 +4,7 @@ import styles from './icon.module.scss';
 
 const Icon =()=>(
     <div className={styles.icon}>
-       <Link to="/" ><Fire /><span className={styles.iconText}>Cal Fire Portal</span></Link> 
+       <Link to="/" ><Fire /><span className={styles.iconText}>California Fire Portal</span></Link> 
     </div>
 )
 

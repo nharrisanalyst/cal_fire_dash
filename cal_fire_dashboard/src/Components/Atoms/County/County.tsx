@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import {City} from '../City/City'
+import CityList from '../../Molecules/CityList/CityList';
 import styles from './County.module.scss'
 
 export type CountyDataType = {
@@ -19,11 +19,7 @@ const County =({data}:CountyProps)=>{
     return(
         <div className={styles.county}>
             <h1><Link to={`/counties/${county}`}>{county}</Link></h1>
-            {
-                Object.keys(data[county]).map((cty)=>(
-                    <City data={{[cty]:data[county][cty]}} />
-                ))
-            }
+            <CityList cityData={data[county]} />
         </div>
     )
 }

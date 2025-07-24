@@ -1,7 +1,9 @@
 import os
 import time
+
 from types import SimpleNamespace
 from flask import Flask, request, jsonify
+from flask_mail import Mail, Message
 from flask_cors import CORS
 
 from Repositories.zipcode_repository import ZipCodeRepository
@@ -10,6 +12,7 @@ from Repositories.avg_repository import AverageRepo
 from Services.avgservice import AverageService
 
 from Models.average import DataAvgData
+from Models.email import EmailForm
 
 time.sleep(60)
 
@@ -18,6 +21,8 @@ password = os.environ.get("POSTGRES_PASSWORD")
 db = os.environ.get("POSTGRES_DB")
 host = os.environ.get("POSTGRES_HOST")
 port= os.environ.get("POSTGRES_PORT")
+email_password = os.environ.get("EMAIL_PASSWORD")
+email_name = os.environ.get("EMAIL_NAME")
 
 zipcode_r = ZipCodeRepository(user=user, password=password, db=db, host=host,port=port)
 zipcode_s = ZipcodeService(repo=zipcode_r)
@@ -28,6 +33,16 @@ avg_s =  AverageService(repo=avg_r)
 
 app = Flask(__name__)
 CORS(app)
+
+## email configs
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = email_name
+app.config['MAIL_PASSWORD'] = email_password
+
+mail = Mail(app)
 
 @app.route('/')
 def hello_world():
@@ -61,6 +76,38 @@ def zipcode_get_all():
     if request.method == 'GET':
         zipcode_all = zipcode_s.getAllZipCodes() 
         return jsonify({'data':zipcode_all}), 200
+    
+@app.route('/email', methods=['POST'])
+def email_inqueries():
+    if request.method == 'POST':
+        form = EmailForm(
+           type = request.form['type'],
+           email = request.form['email'].strip(),
+           first_name = request.form['first_name'].strip(),
+           last_name = request.form['last_name'].strip(),
+           address = request.form['address'],
+           city = request.form['city'],
+           zipcode = request.form['zipcode'],
+           phone_number = request.form['phone_number'],
+           anythingElse = request.form['anythingElse']
+        )
+        msg = Message(
+            subject=f'type: {form.type} from {form.first_name} {form.last_name}',
+            sender='reachoutatportal@gmail.com',
+            recipients=['reachoutatportal@gmail.com'],
+            date= int(time.time()),
+            body = f' type: {form.type} name:{form.first_name} {form.last_name} adress: {form.address}; city: {form.city}; phone number: {form.phone_number} email: {form.email} anything else: {form.anythingElse}'
+        )
+        try:
+            mail.send(msg)
+            return 'Email Was Sent', 200
+        except Exception as e:
+            print(f"Error sending email: {e}")
+            return f"Failed to send email {e} {email_password} {email_name}", 500
+        
+        
+        
+        
     
 if __name__ == '__main__':
      app.run(host='0.0.0.0', port=5000, debug=True)

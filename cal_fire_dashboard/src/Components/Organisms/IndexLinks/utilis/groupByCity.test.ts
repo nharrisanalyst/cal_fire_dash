@@ -9,10 +9,10 @@ describe('test for groupByCity', ()=>{
         const city = 'Rocklin';
         const data = zipData;
         const want:CityDataType ={
-            'Rocklin':['95650','95663', '95677', '95765']
+            'Rocklin':[95677, 95765]
         }
         //act
-        const get = groupByCity(data,city);
+        const get = groupByCity(data.data.filter(d=>d.city==='Rocklin'));
 
         expect(want).toEqual(get);
         
