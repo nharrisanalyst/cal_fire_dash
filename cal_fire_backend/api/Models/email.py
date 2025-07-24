@@ -4,11 +4,6 @@ from typing import Literal
 @dataclass
 class EmailForm:
     type:Literal['FindAnAgent', 'BuyHomeIns', 'BuyCarIns']
-    first_name:str
-    last_name:str
-    address:str
-    city:str
-    zipcode:str
-    phone_number:str
+    name:str
     email:str
-    anythingElse:str
+    message:str

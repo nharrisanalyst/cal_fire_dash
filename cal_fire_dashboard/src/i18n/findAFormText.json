@@ -1,0 +1,17 @@
+{
+    "findanagent":{
+        "h1":"Find A Local Insurance Agent",
+        "description":"Work with a Local Insurance Agent Vetted by Us Partner with a trusted local insurance agent who understands the unique needs of your area. Our vetted agents have extensive experience with homes facing a variety of risk factors. They’re experts at helping buyers understand local hazards and securing affordable, comprehensive coverage tailored to your home.",
+        "formTitle":"Get Matched with a Trusted Agent"
+    },
+    "buyhomeins":{
+        "h1":"Get a Home Insurance Quote",
+        "description":"Easily buy home insurance tailored to your needs. Our policies offer affordable, comprehensive coverage designed to protect against local risks—whether it's fire, weather, or unexpected damage. Get the protection your home deserves with insurance you can trust.",
+        "formTitle":"Get a Policy Tailored to You"
+    },
+    "buycarins":{
+        "h1":"Buy Car Insurance That Keeps You Covered on the Road",
+        "description":"Easily buy car insurance tailored to your driving needs. Our policies offer affordable, comprehensive coverage designed to protect you from accidents, theft, weather damage, and more. Get the protection you need with car insurance you can trust—wherever the road takes you.",
+        "formTitle":"Get a Car Insurance Quote"
+    }
+}

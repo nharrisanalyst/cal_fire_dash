@@ -83,20 +83,15 @@ def email_inqueries():
         form = EmailForm(
            type = request.form['type'],
            email = request.form['email'].strip(),
-           first_name = request.form['first_name'].strip(),
-           last_name = request.form['last_name'].strip(),
-           address = request.form['address'],
-           city = request.form['city'],
-           zipcode = request.form['zipcode'],
-           phone_number = request.form['phone_number'],
-           anythingElse = request.form['anythingElse']
+           name = request.form['name'].strip(),
+           message = request.form['message'].strip(),
         )
         msg = Message(
-            subject=f'type: {form.type} from {form.first_name} {form.last_name}',
+            subject=f'type: {form.type} from {form.name}',
             sender='reachoutatportal@gmail.com',
             recipients=['reachoutatportal@gmail.com'],
             date= int(time.time()),
-            body = f' type: {form.type} name:{form.first_name} {form.last_name} adress: {form.address}; city: {form.city}; phone number: {form.phone_number} email: {form.email} anything else: {form.anythingElse}'
+            body = f' type: {form.type} name:{form.name} email: {form.email} message: {form.message}'
         )
         try:
             mail.send(msg)

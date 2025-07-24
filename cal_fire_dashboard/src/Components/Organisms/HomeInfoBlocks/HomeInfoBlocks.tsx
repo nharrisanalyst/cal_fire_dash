@@ -6,7 +6,7 @@ const HomeInfoBlocks =()=>(
     <div className={styles.homeinfoblocks}>
         <InfoAndLink
             linkText='Get Home Insurance'
-            linkTo='/getHomeIns'
+            linkTo='/buyhomeins'
         >
             <h3>
                 Buy Home Insurance
@@ -14,7 +14,7 @@ const HomeInfoBlocks =()=>(
         </InfoAndLink>
         <InfoAndLink
             linkText='Find an Agent'
-            linkTo='/findAInsAgent'
+            linkTo='/findanagent'
         >
             <h3>Find a Local Agent</h3>
             <div>

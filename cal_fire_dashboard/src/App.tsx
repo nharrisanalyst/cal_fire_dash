@@ -5,6 +5,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import IndexLinks from './Components/Organisms/IndexLinks/IndexLinks';
 import DashboardRedirect from './Pages/DashboardRedirect/DashboardRedirect';
 import NotFound from './Pages/NotFound/NotFound'
+import FindAPage from './Pages/FindAPage/FindAPage'
 import './App.css'
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
           <Route path="/counties" element ={<IndexLinks />} />
           <Route path="/cities" element ={<IndexLinks />} />
           <Route path="/dashboard" element={<DashboardRedirect />} />
+           <Route path="/findanagent" element ={<FindAPage />} />
+          <Route path="/buyhomeins" element ={<FindAPage />} />
+          <Route path="/buycarins" element={<FindAPage />} />
           <Route path="*" element={<NotFound />} /> 
         </Route>
       </Routes>
