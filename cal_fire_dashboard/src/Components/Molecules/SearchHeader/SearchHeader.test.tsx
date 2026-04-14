@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import SearchHeader from './SearchHeader'
 import { MemoryRouter } from 'react-router-dom';
 

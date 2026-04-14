@@ -2,10 +2,6 @@ import styles from './FindAPage.module.scss'
 import { useLocation } from 'react-router-dom'
 import FindAForm from '../../Components/Molecules/FindAForm/FindAForm';
 
-type FindAPageProps ={
-    
-}
-
 const getType = (pathname:string):"findanagent" | "buyhomeins" | "buycarins"|"" =>{
     if(pathname.includes('findanagent')) return 'findanagent';
     if(pathname.includes('buyhomeins')) return 'buyhomeins';

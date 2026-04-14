@@ -1,5 +1,6 @@
-import { render, screen } from '@testing-library/react'
-import CustomInput, { CustomInputProps } from './CustomInput'
+import { render,screen } from '@testing-library/react'
+import CustomInput from './CustomInput'
+import type { CustomInputProps } from './CustomInput'
 import userEvent from '@testing-library/user-event';
 import { validateZipcode } from './utils/validateZipcode';
 
@@ -7,7 +8,7 @@ import { validateZipcode } from './utils/validateZipcode';
 const props:CustomInputProps = {
     validateInput:validateZipcode,
     placeholderText:'Enter Zip code',
-    applyInput:(input)=>{},
+    applyInput:()=>{},
     id:'zipcodeform',
     validationErrWarning: 'Error a NON valid California Zip WAS Submitted'
 }

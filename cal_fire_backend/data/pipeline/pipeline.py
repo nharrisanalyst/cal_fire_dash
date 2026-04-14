@@ -4,7 +4,8 @@ from pathlib import Path
 from types import SimpleNamespace
 import pandas as pd
 import psycopg
-from sqlalchemy import create_engine
+from psycopg import sql
+from sqlalchemy import create_engine, text
 from clean import clean
 
 def pipeline(params):
@@ -14,13 +15,21 @@ def pipeline(params):
     db=params.db
     host=params.host
     port=params.port
+
     ##print('this is the pipeline', user, password, db,host,port)
     conn = psycopg.connect(f'postgresql://{user}:{password}@{host}:{port}/{db}')
+    
+    with open('sql_scripts/drop_views.sql','r') as drop_views_script:
+        drop_views = drop_views_script.read()
+        with conn.cursor() as cur:
+            cur.execute(drop_views)
+            conn.commit()
+    
     
     ##reading all geo data to data frame 
     counties = pd.read_csv('geo_data/county_list.csv')
     cities= pd.read_csv('geo_data/cities.csv')
-    zipcodes = pd.read_csv('geo_data/zipcodes.csv')
+    zipcodes = pd.read_csv('geo_data/zipcode_data_full.csv')
    
     ##reading yearlydata 
     yearly_2018 = pd.read_csv('yearly_data/all_companies/RPCA_ALL_2018.csv',  quotechar='"', dtype=str,  skipinitialspace=True)
@@ -53,7 +62,7 @@ def pipeline(params):
     fire_cleaned = [clean(df) for df in fire_dfs]
     
     ##reading fhsz data 
-    fhsz_data = pd.read_csv('zipcode_fire_rankings/zipcode_fire_rank.csv', quotechar='"')
+    fhsz_data = pd.read_csv('zipcode_fire_rankings/fire_zipcodes.csv', quotechar='"')
     #reading in sql data defenition/create table script 
     #connecting to postgres engine 
     ##executes sql and inserts data for pandas db
@@ -75,6 +84,7 @@ def pipeline(params):
                     'INSERT into cities(city, county_id) values(%s,%s)',
                     (row['city'].strip(),row_sql[0])
                 )
+            conn.commit()
             for _,row in zipcodes.iterrows():
                 cur.execute('SELECT city_id from cities where city = %s;', (row['city'].strip(),))
                 row_sql = cur.fetchone();
@@ -114,14 +124,15 @@ def pipeline(params):
     ## uploading fhsz data to the postgres database
     fhsz_data.to_sql("fhsz_data", engine_alch, if_exists="replace")  
     
-    conn = psycopg.connect(f'postgresql://{user}:{password}@{host}:{port}/{db}')
+    
+    conn_2 = psycopg.connect(f'postgresql://{user}:{password}@{host}:{port}/{db}')
     
     with open('sql_scripts/make_views.sql','r') as make_views_script:
         make_views = make_views_script.read()
-        with conn.cursor() as cur:
+        with conn_2.cursor() as cur:
             cur.execute(make_views)
-            conn.commit()
-        
+            conn_2.commit()
+        conn_2.close() 
         
 ## adding data that gives us FHSZ_mean and FHS_majority
 

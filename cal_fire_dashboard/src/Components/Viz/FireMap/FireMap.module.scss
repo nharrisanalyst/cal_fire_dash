@@ -1,0 +1,21 @@
+.firemap{
+    height: 100%;
+    width: 100%;
+    position: "relative";
+    border-radius: 15px;
+    overflow: hidden;
+
+    .fireMapLegend{
+        z-index: 999;
+        position: relative;
+        top:-25px;
+        left: 10px;
+    }
+
+    .mapLegendCont{
+        position: relative;
+        top:-25px;
+        left:10px;
+        
+    }
+}

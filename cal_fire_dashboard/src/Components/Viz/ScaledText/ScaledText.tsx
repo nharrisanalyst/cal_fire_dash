@@ -2,9 +2,9 @@ import {useMemo} from 'react';
 import styles from './ScaledText.module.scss'
 import {textScale} from './utilis/textScale';
 
-export const scale = textScale(['High','Medium', 'Low'], [' #FF0000',' #FFFF00', ' #E0B0FF'])
+export const scale = textScale(['Very High', 'High','Medium', 'Low'], [' #f52020',' #f52020',' #edd924', ' #0e81ed'])
 
-type ScaledTextProps ={
+export type ScaledTextProps ={
   value:string
   scale:(text:string)=>string;
 }

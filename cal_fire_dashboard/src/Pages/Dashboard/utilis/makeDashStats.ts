@@ -52,7 +52,7 @@ export const makeDashLineData = (zipData:ZipCodeData[], avgData:DataAvg[]):LineC
           keytoType.set('ppc_class', 'ppc'); 
           keytoType.set('fire_risk', 'fire');
         
-        const lineChartItems:LineChartItem[] = keys.map((key,i)=>{
+        const lineChartItems:LineChartItem[] = keys.map((key,_)=>{
             if(key === 'ppc_class'){
             return{
                 type:'ppc',
@@ -72,7 +72,7 @@ export const makeDashLineData = (zipData:ZipCodeData[], avgData:DataAvg[]):LineC
                     numTicks: apiToLineData<PPCLineData>(zipData, avgData, 'ppc_class').length,
                     height: "100%",
                     width: '100%',
-                    colorScale: (d:PPCLine, i:number)=>['black', 'grey'][i],
+                    colorScale: (i:number)=>['black', 'grey'][i],
                     xFormat: (d: number | Date) => {
                         if(typeof d === 'number'){
                             return String(d);
@@ -101,7 +101,7 @@ export const makeDashLineData = (zipData:ZipCodeData[], avgData:DataAvg[]):LineC
                     numTicks: apiToLineData<FireRiskData>(zipData, avgData, 'fire_risk').length,
                     height: "100%",
                     width: '100%',
-                    colorScale: (d:FireRisk, i:number)=>['black', 'grey'][i],
+                    colorScale: (i:number)=>['black', 'grey'][i],
                     xFormat: (d: number | Date) => {
                         if(typeof d === 'number'){
                             return String(d);
@@ -112,6 +112,35 @@ export const makeDashLineData = (zipData:ZipCodeData[], avgData:DataAvg[]):LineC
                     }
             }
         }
+        //default return 
+        return {
+                type:'ppc',
+                title:dataPres.dataPresentations.lineChartData['ppc_class'].title,
+                dataInfo:dataPres.dataPresentations.info['ppc_class'],
+                lineProps:{
+                    legendItems: dataPres.dataPresentations.lineChartData['ppc_class'].legendItems,
+                    x:(d:PPCLine)=>+d.year,
+                    ylist:[
+                        (d:PPCLine)=>d.ppc_class,
+                        (d:PPCLine)=>d.ppc_average
+                        
+                    ],
+                    yLabel: dataPres.dataPresentations.lineChartData['ppc_class'].yLabel,
+                    xLabel: dataPres.dataPresentations.lineChartData['ppc_class'].xLabel,
+                    data: apiToLineData<PPCLineData>(zipData, avgData, 'ppc_class'),
+                    numTicks: apiToLineData<PPCLineData>(zipData, avgData, 'ppc_class').length,
+                    height: "100%",
+                    width: '100%',
+                    colorScale: (i:number)=>['black', 'grey'][i],
+                    xFormat: (d: number | Date) => {
+                        if(typeof d === 'number'){
+                            return String(d);
+                        }
+                        return new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(d);
+
+                        }
+                    }
+            }
     })
 
     return lineChartItems;

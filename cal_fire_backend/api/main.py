@@ -5,11 +5,14 @@ from types import SimpleNamespace
 from flask import Flask, request, jsonify
 from flask_mail import Mail, Message
 from flask_cors import CORS
+from psycopg_pool import ConnectionPool
 
 from Repositories.zipcode_repository import ZipCodeRepository
 from Services.zipcodeservice import ZipcodeService
 from Repositories.avg_repository import AverageRepo
 from Services.avgservice import AverageService
+from Repositories.suggestion_repository import SuggestionRepository
+from Services.suggestionservice import SuggestionService
 
 from Models.average import DataAvgData
 from Models.email import EmailForm
@@ -24,11 +27,16 @@ port= os.environ.get("POSTGRES_PORT")
 email_password = os.environ.get("EMAIL_PASSWORD")
 email_name = os.environ.get("EMAIL_NAME")
 
-zipcode_r = ZipCodeRepository(user=user, password=password, db=db, host=host,port=port)
+pool = ConnectionPool(f"dbname={db} user={user} password={password} host={host} port={port}")
+ 
+zipcode_r = ZipCodeRepository(pool)
 zipcode_s = ZipcodeService(repo=zipcode_r)
 
-avg_r = AverageRepo(user=user, password=password, db=db, host=host,port=port)
+avg_r = AverageRepo(pool)
 avg_s =  AverageService(repo=avg_r)
+
+sug_r = SuggestionRepository(pool)
+sug_s = SuggestionService(repo=sug_r)
 
 
 app = Flask(__name__)
@@ -46,7 +54,7 @@ mail = Mail(app)
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return 'Hello World!', 200
 
 @app.route('/zipcode', methods=['GET'])
 def zipcod_root():
@@ -100,7 +108,19 @@ def email_inqueries():
             print(f"Error sending email: {e}")
             return f"Failed to send email {e} {email_password} {email_name}", 500
         
-        
+@app.route('/searchhelp/cities', methods=['get'])
+def citySearch():
+    if request.method == 'GET':
+        citySuggestion = request.args.get('search')
+        city_suggestion_data = sug_s.getCitySuggestions(citySuggestion)
+        return jsonify({'suggestions':city_suggestion_data}), 200
+    
+@app.route('/searchhelp/zipcodes', methods=['get'])
+def zipcodeSearch():
+    if request.method == 'GET':
+        zipSuggestion = int(request.args.get('search'))
+        zipcode_suggestion_data = sug_s.getZipCodeSuggestions(zipSuggestion)
+        return jsonify({'suggestions':zipcode_suggestion_data}), 200
         
         
     

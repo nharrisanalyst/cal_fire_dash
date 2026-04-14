@@ -1,5 +1,21 @@
 
-main{
-  
+body{
+  margin:0px;
 }
 
+main{
+  margin-left: 8px;
+  margin-right:8px;
+}
+
+.leaflet-container {
+  z-index: 0; 
+}
+
+.leaflet-control-container{
+    z-index: 1000 !important; 
+    position:relative;
+}
+.leaflet-overlay-pane{
+  z-index: 550 !important; 
+}

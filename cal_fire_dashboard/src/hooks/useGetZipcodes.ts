@@ -8,8 +8,6 @@ export type ZipData = {
     zipcode:number;
 }
 
-type Loading = 'Loading Data' | 'Data Loaded'| 'Data Err'
-
 export const useGetZipCodes=():[ZipData[],Loading] =>{
         const initDataState:ZipData[] =[]
         const [data, setData] =useState<ZipData[]>(initDataState)

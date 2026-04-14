@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import styles from './SecondHeader.module.scss'
 import SearchHeader from '../SearchHeader/SearchHeader';
 import { validateZipcode } from '../../Atoms/CustomInput/utils/validateZipcode';

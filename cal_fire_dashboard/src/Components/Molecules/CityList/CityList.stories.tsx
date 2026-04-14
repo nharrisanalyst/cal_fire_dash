@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { MemoryRouter } from 'react-router-dom'
 
 import CityList from './CityList';
 
@@ -9,6 +10,13 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+  decorators: [
+    (Story) => (
+        <MemoryRouter initialEntries={['/']}>
+                <Story />
+        </MemoryRouter>
+    ),
+  ],
   tags: ['autodocs'],
 } satisfies Meta<typeof CityList>;
 
@@ -17,5 +25,9 @@ type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
-  args:{},
+  args:{
+    cityData:{
+      Rocklin:[95677,95678]
+    }
+  },
 };

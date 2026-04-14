@@ -1,6 +1,6 @@
 import {makeDashTopStats} from './makeDashStats'
 import { scaleNumToText } from '../../../utilis/fhszRankingScale'
-import type { topStat } from '../../../Components/Organisms/FireDash/FireDash'
+import type { TopStat } from '../../../Components/Organisms/FireDash/FireDash'
 
 import zipdata from '../../../__mocks__/zipcodeMock.json'
 import avgMock from '../../../__mocks__/avgMock.json'
@@ -16,7 +16,7 @@ describe('test for makeDashTopStats()', ()=>{
         const inputZipData = zipdata.data;
         const inputAvgData = avgMock.avg_data
 
-        const want:topStat[] =[
+        const want:TopStat[] =[
             {
                 title:dataPres.dataPresentations.titles.fhsz_ranking,
                 dataInfo:dataPres.dataPresentations.info.fhsz_ranking,

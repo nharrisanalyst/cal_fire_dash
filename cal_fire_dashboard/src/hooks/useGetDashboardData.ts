@@ -4,14 +4,16 @@ import type {FireDashProps} from '../Components/Organisms/FireDash/FireDash';
 import {makeDashTopStats, makeDashLineData} from '../Pages/Dashboard/utilis/makeDashStats'
 import api from '../api/api';
 
-type Loading = 'Loading Data' | 'Data Loaded'| 'Data Err'|'Zipcode Undefined'
+export type Loading = 'Loading Data' | 'Data Loaded'| 'Data Err'|'Zipcode Undefined'
 
-export const useGetDashboardData = (zipcode:number|string|undefined):[FireDashProps,Loading] =>{
-    const initDataState: FireDashProps= {
+export type DashData = Omit<FireDashProps, 'zipcode'>;
+
+export const useGetDashboardData = (zipcode:number|string|undefined):[DashData,Loading] =>{
+    const initDataState: DashData= {
                     topStats:[],
                     lineCharstItems:[]
                 }
-    const [data, setData] =useState<FireDashProps>(initDataState)
+    const [data, setData] =useState<DashData>(initDataState)
     const [loading, setLoading] =useState<Loading>('Loading Data');
 
     
@@ -20,7 +22,7 @@ export const useGetDashboardData = (zipcode:number|string|undefined):[FireDashPr
         
         if(zipcode === undefined){
             setData(initDataState)
-        setLoading('Zipcode Undefined');
+            setLoading('Zipcode Undefined');
         return; 
         }
 
@@ -30,8 +32,7 @@ export const useGetDashboardData = (zipcode:number|string|undefined):[FireDashPr
                 const respAvg = await api.get('/data/avgdata')
                 const respZipData:ZipCodeDataList = respZip.data;
                 const avgData:DataAvgList      = respAvg.data;
-                console.log(respZipData,avgData, 'this is the data');
-                const dashData:FireDashProps ={
+                const dashData:DashData ={
                     topStats:makeDashTopStats(respZipData.data, avgData.avg_data),
                     lineCharstItems:makeDashLineData(respZipData.data, avgData.avg_data)
                 }

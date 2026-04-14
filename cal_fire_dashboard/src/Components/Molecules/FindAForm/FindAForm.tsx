@@ -21,6 +21,9 @@ const formTypeMap: Record<FindAFormProps['findType'], FormDataType['type']> ={
     "buycarins":'BuyCarIns'
 }
 
+//type DataSentType ='INFO_RECEIVED' | "INFO_ERR" |"SHOW_FORM";
+
+
 const FindAForm =({findType}:FindAFormProps)=>{
     const text = formText[findType];
 

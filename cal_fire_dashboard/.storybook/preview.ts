@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite'
 import '../src/styles/global.css'
+import 'leaflet/dist/leaflet.css';
 
 const preview: Preview = {
   parameters: {

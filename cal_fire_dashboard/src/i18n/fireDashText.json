@@ -1,0 +1,7 @@
+{
+    "mapLegendText":{
+        "veryHigh":{"text":"Risk Very High", "color":"#f52020"},
+        "high":{"text":"Risk High", "color":"#f5941d"},
+        "moderate":{"text":"Risk Moderate", "color":"#f5e61d"}
+    }
+}

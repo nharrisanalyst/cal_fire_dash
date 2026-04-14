@@ -1,10 +1,12 @@
 import styles from './home.module.scss'
 import ImageInput from "../../Components/Molecules/ImageInput/ImageInput" 
 import HomeInfoBlocks from '../../Components/Organisms/HomeInfoBlocks/HomeInfoBlocks'
+import { TitleAndMetaHome } from '../Dashboard/TitleAndMeta/TitleAndMeta'
 
 const Home =()=>(
 
         <div className={styles.home}>
+            < TitleAndMetaHome />
             <ImageInput />
             <div className={styles.homeBreakHeader}>
                 <div style={{paddingBottom:'6px'}}>

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { MouseEvent } from 'react';
+import type { MouseEvent } from 'react';
 
 import CustomButtom from './CustomButtom';
 

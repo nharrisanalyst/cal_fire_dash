@@ -1,5 +1,5 @@
 import { groupByCounty } from "./groupByCounty";
-import { CountyDataType } from "../../../Atoms/County/County"
+import type { CountyDataType } from "../../../Atoms/County/County"
 
 import zipData from '../../../../__mocks__/zipplainmock.json'
 

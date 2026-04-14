@@ -12,7 +12,7 @@ describe('test for groupByCity', ()=>{
             'Rocklin':[95677, 95765]
         }
         //act
-        const get = groupByCity(data.data.filter(d=>d.city==='Rocklin'));
+        const get = groupByCity(data.data.filter(d=>d.city===city));
 
         expect(want).toEqual(get);
         
