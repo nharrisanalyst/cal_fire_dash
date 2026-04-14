@@ -36,6 +36,8 @@ services:
     working_dir: /api
     environment:
       PYTHONPATH: /api
+    volumes:
+      - ./api:/api 
     build:
       context: .
       dockerfile: Dockerfile

@@ -1,8 +1,8 @@
 ''' 
-docker commands to run pytest
+"docker commands to run pytest"
 
-docker compose run --rm api-test bash
-# pytest -vv
+docker compose run --rm api-tests bash
+# pytest -v
 '''
 
 import pytest  
