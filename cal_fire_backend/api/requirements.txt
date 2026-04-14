@@ -5,3 +5,4 @@ Flask-CORS==6.0.1
 Flask-Mail==0.10.0
 gunicorn==22.0.0
 psycopg_pool==3.2.6
+pytest==8.4.2
