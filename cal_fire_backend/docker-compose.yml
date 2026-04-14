@@ -29,6 +29,23 @@ services:
       - ./api:/api 
     env_file:
         - .db.env
+    depends_on:
+      - db
+      - pipeline
+  api-tests:
+    working_dir: /api
+    environment:
+      PYTHONPATH: /api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5175"
+    env_file:
+        - .db.env
+    depends_on:
+      - db
+      - pipeline
   pipeline:
     build: 
       context: ./data
