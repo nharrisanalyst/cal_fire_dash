@@ -11,6 +11,13 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+  decorators:[
+    (Story) => (
+      <div style={{width:"1495px"}}>
+        <Story />
+      </div>
+    ),
+  ],
   tags: ['autodocs'],
 } satisfies Meta<typeof FireDash>;
 
@@ -20,6 +27,7 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
   args:{
+    zipcode:"95677",
     topStats:[
       {
         value:'High',

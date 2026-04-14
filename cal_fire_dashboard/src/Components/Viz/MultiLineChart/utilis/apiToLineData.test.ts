@@ -2,7 +2,6 @@ import type { PPCLineData } from "../../../../api/models"
 import type { DataAvgList } from "../../../../api/models"
 import type { ZipCodeDataList } from "../../../../api/models"
 import { apiToLineData } from './apiToLineData'
-import type{ PPCLineData } from "../../../../api/models"
 
 //json data 
 import avgDataJSON from '../../../../__mocks__/avgMock.json'

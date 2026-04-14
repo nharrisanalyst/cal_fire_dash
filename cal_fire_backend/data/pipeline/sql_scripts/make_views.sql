@@ -6,7 +6,7 @@ create MATERIALIZED view fire_pp_claims_and_losses as
 	select p.year, a.zipcode, city, county, 
 		f."Average Fire Risk",
 		p."Average PPC Class",
-		hz."FHSZ_majority" as fhsz_ranking,
+		hz."FHSZ_avg_rating" as fhsz_ranking,
 		a."Non Cat Cov A Fire Claims" + a."Non Cat Cov C Fire Claims" as non_cat_fire_claims,
 		a."Non Cat Cov A Fire Losses" + a."Non Cat Cov C Fire Losses" as non_cat_fire_losses,
 		a."Non Cat Cov A Smoke Claims" + a."Non Cat Cov C Smoke Claims" as non_cat_smoke_claims,
@@ -73,3 +73,39 @@ create view all_avg as
 
 
 COMMIT;
+
+
+BEGIN;
+
+Drop view if EXISTS fhsz_zipcodes;
+
+create  view fhsz_zipcodes as
+	Select "GEOID20" as real_zipcode
+	from fhsz_data;
+
+COMMIT;
+
+BEGIN;
+Drop view if EXISTS zipcodes_exclude;
+create view zipcodes_exclude as
+	select real_zipcode 
+	from fhsz_zipcodes
+	where real_zipcode not in (
+	select distinct(zipcode)
+	from fire_data);
+COMMIT;
+
+BEGIN;
+
+Drop view if EXISTS real_zipcodes;
+
+CREATE VIEW real_zipcodes as
+	select real_zipcode as real_zipcodes 
+	from fhsz_zipcodes
+	WHERE real_zipcode not in (
+		SELECT real_zipcode 
+		from zipcodes_exclude);
+
+Commit;
+
+

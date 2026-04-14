@@ -1,14 +1,26 @@
+@use '../../../assets/scss' as *;
+
 .firedash{
   width:100%;
+  max-width: 100vw;
   height:100%;
   display: grid;
-  grid-template-rows: 4fr 8fr;
   gap:18px;
+  @media (max-width: $breakpoint-md){
+      gap: 8px;
+    }
   .dashStats{
     width:100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-     gap: 12px;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit,minmax(calc(25% - 12px),1fr));
+    gap: 12px;
+
+    @media (max-width: $breakpoint-md){
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
      
     // border-bottom: 1px solid rgb(170, 169, 169);
     
@@ -30,7 +42,26 @@
     .lineCharts{
       width:100%;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      justify-content: center;
+      grid-template-columns: repeat(auto-fit,minmax(calc(50% - 9px),1fr));
       gap:18px;
+
+      @media (max-width: $breakpoint-md){
+      grid-template-columns: 1fr;
+      gap:8px;
+      }
+    }
+    .fireMapCont{
+      width:100%;
+      height:600px;
+      border:1.5px solid #dbdada;
+      border-radius: 15px;
+      margin-bottom: 45px;
+       @media (max-width: $breakpoint-sm){
+        height:calc(100vh - 137.5px);
+      }
+      .leaflet-container {
+        border-radius: 15px;
+      }
     }
 }

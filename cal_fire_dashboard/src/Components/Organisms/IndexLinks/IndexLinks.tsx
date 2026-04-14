@@ -1,18 +1,16 @@
 import styles from './IndexLinks.module.scss'
-import Zipcode from '../../Atoms/Zipcode/Zipcode';
 import ZipcodeList from '../../Molecules/ZipcodeList/ZipcodeList';
 import CityList from '../../Molecules/CityList/CityList';
 import CountyList from '../../Molecules/CountyList/CountyList'
 import { useGetZipCodes } from '../../../hooks/useGetZipcodes';
 import { groupByCity } from './utilis/groupByCity';
 import { groupByCounty } from './utilis/groupByCounty';
-import { useLocation } from "react-router";
+import { useLocation } from "react-router-dom";
 
 
 
 const IndexLinks =()=>{
     const params = useLocation();
-    console.log(params, 'these are the params')
     const pathName = params.pathname;
     const dataToGroupBy = pathName.split("/")[1]
     const [ data, loading ] = useGetZipCodes();

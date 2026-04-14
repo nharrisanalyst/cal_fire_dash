@@ -1,6 +1,5 @@
 import {useState, useRef} from 'react'
 import {useClickOutside} from '../../../hooks/useClickOutside'
-import type { MouseEvent } from 'react';
 import styles from './Info.module.scss'
 
 

@@ -34,5 +34,8 @@ cal_fire_backend/data/California_Historic_Fire_Perimeters
 cal_fire_backend/data/FHSZ_Shape_files
 cal_fire_backend/data/extra_data
 cal_fire_backend/pgdata
+cal_fire_backend**
+.terraform
+
 
 data_backup

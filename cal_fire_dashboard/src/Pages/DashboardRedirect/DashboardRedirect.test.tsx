@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import DashboardRedirect from './DashboardRedirect'
 
 describe('these are test for the <DashboardRedirect /> component', ()=>{

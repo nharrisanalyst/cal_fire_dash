@@ -29,7 +29,7 @@ export const Primary: Story = {
   args:{
     validateInput:validateZipcode,
     placeholderText:'Enter California Zip code',
-    updateStore:(input)=>{},
+    applyInput:()=>{},
     id:'zipcodeform',
     validationErrWarning:'Error a NON valid California Zip WAS Submitted'
   },
@@ -41,7 +41,7 @@ export const HeaderInput:Story ={
   args:{
     validateInput:validateZipcode,
     placeholderText:'Enter California Zip code',
-    updateStore:(input)=>{},
+    applyInput:()=>{},
     id:'zipcodeform',
     validationErrWarning:'Error a NON valid California Zip WAS Submitted'
   }

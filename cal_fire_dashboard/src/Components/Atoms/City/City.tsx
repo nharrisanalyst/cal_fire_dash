@@ -1,5 +1,4 @@
-import {Link} from 'react-router'
-import Zipcode from '../Zipcode/Zipcode';
+import {Link} from 'react-router-dom'
 import ZipcodeList from '../../Molecules/ZipcodeList/ZipcodeList';
 import styles from './City.module.scss'
 

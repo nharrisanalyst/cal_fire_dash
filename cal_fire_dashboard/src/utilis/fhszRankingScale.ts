@@ -1,4 +1,4 @@
-import {scaleOrdinal} from 'd3-scale';
+import {scaleOrdinal, scaleThreshold} from 'd3-scale';
 
-export const scaleNumToText = scaleOrdinal([3,2,1,0], ["Very High", "High", "Moderate", "None"])
-export const scaleTextToColor = scaleOrdinal(["Very High", "High", "Moderate", "None"], ['red', 'red', 'blue','#7F00FF'])
+export const scaleNumToText = scaleThreshold<number,string>([.2, 1.2, 2.2], ["Low", "Moderate", "High", "Very High"])
+export const scaleTextToColor = scaleOrdinal(["Very High", "High", "Moderate", "Low"], ['red', 'red', '#edd924','blue'])

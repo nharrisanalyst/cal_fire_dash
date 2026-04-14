@@ -23,9 +23,15 @@ dist-ssr
 *.sln
 *.sw?
 
-.env
+.env.development
+.env.production
 
 *storybook.log
 storybook-static
-/React-Component
-make_react_component.sh
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

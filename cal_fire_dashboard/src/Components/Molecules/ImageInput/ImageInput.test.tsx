@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import ImageInput from './ImageInput'
 import { MemoryRouter } from 'react-router-dom';
 

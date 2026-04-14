@@ -1,5 +1,11 @@
+@use '../../../assets/scss' as *;
+
 .homeinfoblocks{
     display:flex;
     gap:55px;
     justify-content: center;
+
+    @media (max-width: $breakpoint-md){
+        display:block;
+    }
 }

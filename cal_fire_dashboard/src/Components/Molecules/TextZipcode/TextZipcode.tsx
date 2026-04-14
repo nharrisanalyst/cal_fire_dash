@@ -1,7 +1,7 @@
 import MainText from "../../Atoms/MainText/MainText"
 import CustomInput from "../../Atoms/CustomInput/CustomInput"
 import { validateZipcode } from "../../Atoms/CustomInput/utils/validateZipcode"
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import styles from './textZipcode.module.scss'
 
 
@@ -10,18 +10,19 @@ const TextZipCode = ()=>{
    
     const updateZipCode=(zip:string|number):void =>{
         let zipInt = zip;
-        if (typeof zip === 'string') {
-        zipInt = parseInt(zip);
+            zipInt = String(zipInt)
+        const pattern = /9\d{4}/;
+        const flagsString = "g";
+        const rg = new RegExp(pattern, flagsString)
+        const matches = zipInt.match(rg)
+        if(matches != null){
+        navigate(`/dashboard/${matches[0]}`)
         }
-
-        navigate(`/dashboard/${zipInt}`)
-
-        
    }
     return(
     <div className={styles.textAndInput}>
-        <MainText lineOne="Know. Insure." lineTwo="Save. Protect." color="white" />
-        <CustomInput   id='validatexipcode' 
+        <MainText lineOne="Analyze. Insure." lineTwo="Protect. Secure." color="white" />
+        <CustomInput   id='validatextzipcode' 
                         validateInput={validateZipcode} 
                         placeholderText="Enter a Valid California Zip code"  
                         applyInput={updateZipCode}

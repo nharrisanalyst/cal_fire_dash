@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link } from "react-router-dom"
 import CityList from '../../Molecules/CityList/CityList';
 import styles from './County.module.scss'
 

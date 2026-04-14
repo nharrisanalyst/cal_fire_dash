@@ -12,7 +12,7 @@ const MainText =({lineOne, lineTwo, color}:MainTextProps)=>{
 if(!lineOne) return (<div>{'error no text provided'}</div>)
 
 return(
-      <div className={styles.mainText} style={{'color':color}}><h1>{lineOne}</h1><h1>{lineTwo}</h1> </div>
+      <div className={styles.mainText} style={{'color':color}}><h1>{lineOne}  <span>{lineTwo}</span></h1> </div>
 )
 }
 

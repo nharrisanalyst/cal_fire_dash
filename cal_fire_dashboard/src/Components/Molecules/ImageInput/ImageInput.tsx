@@ -1,5 +1,5 @@
 import styles from './ImageInput.module.scss'
-import TextZipCode from '../TextZipCode/TextZipcode';
+import TextZipCode from '../TextZipcode/TextZipcode';
 
 const ImageInput =()=>(
     <div className={styles.imageinput}>

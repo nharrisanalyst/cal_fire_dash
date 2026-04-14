@@ -31,7 +31,7 @@ describe('these are test for the makeDashLineData()', ()=>{
                     numTicks: apiToLineData<PPCLineData>(zipdata.data, avgMock.avg_data, 'ppc_class').length,
                     height: "100%",
                     width: '100%',
-                    colorScale: (d:PPCLine, i:number)=>['black', 'grey'][i],
+                    colorScale: (i:number)=>['black', 'grey'][i],
                     xFormat: (d: number | Date) => {
                         if(typeof d === 'number'){
                             return String(d);
@@ -58,7 +58,7 @@ describe('these are test for the makeDashLineData()', ()=>{
                     numTicks: apiToLineData<FireRiskData>(zipdata.data, avgMock.avg_data, 'fire_risk').length,
                     height: "100%",
                     width: '100%',
-                    colorScale: (d:FireRisk, i:number)=>['black', 'grey'][i],
+                    colorScale: (i:number)=>['black', 'grey'][i],
                     xFormat: (d: number | Date) => {
                         if(typeof d === 'number'){
                             return String(d);

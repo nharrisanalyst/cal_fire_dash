@@ -1,4 +1,19 @@
+@use '../../../assets/scss' as *;
+
 .mainText{
-    font-size:36px;
-    line-height:30px;
+    font-size:34px;
+    line-height:68px;
+    max-width:550px;
+
+    @media (max-width: $breakpoint-sm){
+        font-size: 26px;
+        line-height: 52px;
+        margin:auto;
+        
+        text-align: center;
+    }
+
+    span{
+        display:inline-block;
+    }
 }

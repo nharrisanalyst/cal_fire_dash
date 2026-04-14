@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import type { PPCLine } from '../../../api/models';
+import type { PPCLine, PPCLineData } from '../../../api/models';
 
 import avgDataJSON from '../../../__mocks__/avgMock.json'
 import zipCodeData from '../../../__mocks__/zipcodeMock.json'
-import { apiToLineDataPPC } from './utilis/apiToLineData';
+import { apiToLineData } from './utilis/apiToLineData';
 
-const lineData = apiToLineDataPPC(zipCodeData,avgDataJSON);
+
+const lineData = apiToLineData<PPCLineData>(zipCodeData.data,avgDataJSON.avg_data, 'ppc_class');
 
 import {MultiLinePPCChart} from './MultiLinePPCChart';
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -36,7 +37,7 @@ export const PPCLineChart: Story = {
         numTicks:lineData.length,
         height:'100%',
         width:'100%',
-        colorScale:(d:PPCLine, i:number)=>['black', 'grey'][i],
+        colorScale:(i:number)=>['black', 'grey'][i],
         xFormat:(t:number|Date)=>{
           if(typeof t === 'number'){
             return String(t);

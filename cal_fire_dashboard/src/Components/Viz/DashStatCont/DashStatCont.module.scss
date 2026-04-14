@@ -1,7 +1,10 @@
+@use '../../../assets/scss' as *;
+
 .dashstatcont{
     // border-right: 1.5px solid #919191;
     min-height: 250px;
-    min-width:  250px;
+    height:250px;
+    min-width:  calc(100% - 36px);
     display: grid;
     padding:16px;
     grid-template-rows: 1fr 2fr 1fr;
@@ -10,7 +13,11 @@
     //box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 4px 0px;
    border: 1.5px solid #dbdada;
    border-radius: 15px;
-    background-color: white;
+   background-color: white;
+   @media (max-width: $breakpoint-md){
+      min-height: 200px;
+      height:200px;
+    }
     .top{
         display: flex;
         .title{

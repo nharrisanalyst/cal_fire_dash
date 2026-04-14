@@ -68,7 +68,7 @@ city,county
  Barstow, San Bernardino
  Bass Lake, Madera
  Bayside, Humboldt
- Beale Afb, Yuba
+ Beale AFB, Yuba
  Beaumont, Riverside
  Beckwourth, Plumas
  Belden, Plumas
@@ -98,7 +98,7 @@ city,county
  Biola, Fresno
  Birds Landing, Solano
  Bishop, Inyo
- Blairsden-graeagle, Plumas
+ Blairsden Graeagle, Plumas
  Blocksburg, Humboldt
  Bloomington, San Bernardino
  Blue Jay, San Bernardino
@@ -291,6 +291,7 @@ city,county
  Diablo, Contra Costa
  Diamond Bar, Los Angeles
  Diamond Springs, El Dorado
+ Discovery Bay, Contra Costa
  Dillon Beach, Marin
  Dinuba, Tulare
  Dixon, Solano
@@ -318,6 +319,7 @@ city,county
  Earlimart, Tulare
  Earp, San Bernardino
  East Irvine, Orange
+ Eastvale,Riverside
  Echo Lake, El Dorado
  Edison, Kern
  Edwards, Kern
@@ -520,6 +522,7 @@ city,county
  Julian, San Diego
  Junction City, Trinity
  June Lake, Mono
+ Jurupa Valley,Riverside
  Kaweah, Tulare
  Keeler, Inyo
  Keene, Kern
@@ -596,7 +599,7 @@ city,county
  Lindsay, Tulare
  Litchfield, Lassen
  Little Lake, Inyo
- Littleriver, Mendocino
+ Little River, Mendocino
  Littlerock, Los Angeles
  Live Oak, Sutter
  Livermore, Alameda
@@ -720,6 +723,7 @@ city,county
  Mount Shasta, Siskiyou
  Mount Wilson, Los Angeles
  Mountain Center, Riverside
+ Mountain Mesa, Kern
  Mountain Pass, San Bernardino
  Mountain Ranch, Calaveras
  Mountain View, Santa Clara
@@ -841,6 +845,7 @@ city,county
  Piercy, Mendocino
  Pilot Hill, El Dorado
  Pine Grove, Amador
+ Pine Mountain Club,Kern
  Pine Valley, San Diego
  Pinecrest, Tuolumne
  Pinole, Contra Costa
@@ -856,6 +861,7 @@ city,county
  Planada, Merced
  Platina, Shasta
  Playa Del Rey, Los Angeles
+ Playa Vista, Los Angeles
  Pleasant Grove, Sutter
  Pleasant Hill, Contra Costa
  Pleasanton, Alameda
@@ -1030,7 +1036,7 @@ city,county
  Simi Valley, Ventura
  Skyforest, San Bernardino
  Sloughhouse, Sacramento
- Smartville, Nevada
+ Smartsville, Nevada
  Smith River, Del Norte
  Snelling, Merced
  Soda Springs, Nevada
@@ -1119,7 +1125,7 @@ city,county
  Tracy, San Joaquin
  Tranquillity, Fresno
  Traver, Tulare
- Travis Afb, Solano
+ Travis AFB, Solano
  Tres Pinos, San Benito
  Trinidad, Humboldt
  Trinity Center, Trinity
@@ -1196,7 +1202,7 @@ city,county
  Westwood, Lassen
  Wheatland, Yuba
  Whiskeytown, Shasta
- White Water, Riverside
+ Whitewater, Riverside
  Whitethorn, Humboldt
  Whitmore, Shasta
  Whittier, Los Angeles
