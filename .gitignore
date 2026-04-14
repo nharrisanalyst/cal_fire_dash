@@ -1,3 +1,5 @@
+**__pycache__**
+
 # Logs
 cal_fire_dashboard/logs
 cal_fire_dashboard/*.log
@@ -33,8 +35,11 @@ cal_fire_backend/.db.env
 cal_fire_backend/data/California_Historic_Fire_Perimeters
 cal_fire_backend/data/FHSZ_Shape_files
 cal_fire_backend/data/extra_data
+cal_fire_backend/data/extra_data
+cal_fire_backend/data/pipeline/geo_data/zipcode_data_full.csv
+cal_fire_backend/data/pipeline/zipcode_fire_rankings/fire_zipcodes.csv
+
 cal_fire_backend/pgdata
-cal_fire_backend**
 .terraform
 
 
