@@ -54,7 +54,12 @@ mail = Mail(app)
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!', 200
+    return jsonify(
+        {
+            'hello':'world',
+            'message':'The api is healthy.'
+        }
+        ), 200
 
 @app.route('/zipcode', methods=['GET'])
 def zipcod_root():
