@@ -54,12 +54,19 @@ mail = Mail(app)
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!', 200
+    return jsonify(
+        {
+            'hello':'world',
+            'message':'The api is healthy.'
+        }
+        ), 200
 
 @app.route('/zipcode', methods=['GET'])
 def zipcod_root():
     if request.method == 'GET':
-        return 'Use this endpoint to get info on zipcodes'
+        return jsonify(
+            {"message": 'Use this endpoint to get info on zipcodes'}
+        ), 200
 
 @app.route('/zipcode/<int:zipcode>', methods=['GET'])
 def zipcode_lookup(zipcode):
