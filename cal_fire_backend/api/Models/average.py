@@ -1,6 +1,7 @@
 from typing import List, Literal
 from dataclasses import dataclass
 from typing import Protocol, runtime_checkable
+from pydantic.dataclasses import dataclass
 
 ## This is the model for all the averages. These numbers are all averages grouped by year
 @dataclass
