@@ -62,10 +62,21 @@ def hello_world():
         ), 200
 
 @app.route('/zipcode', methods=['GET'])
-def zipcod_root():
+def zipcode_root():
     if request.method == 'GET':
         return jsonify(
             {"message": 'Use this endpoint to get info on zipcodes'}
+        ), 200
+        
+@app.route('/data', methods=['GET'])
+def data_root():
+    if request.method == 'GET':
+        return jsonify(
+            {
+                "message": "available data endpoints",
+                "avgdata": "averages (sum)  of data  across all zipcodes",
+                "zipcode": "/<int:zipcode>/ data for a specific zipcode"
+            }
         ), 200
 
 @app.route('/zipcode/<int:zipcode>', methods=['GET'])
