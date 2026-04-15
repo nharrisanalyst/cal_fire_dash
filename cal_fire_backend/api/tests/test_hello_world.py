@@ -11,8 +11,9 @@ def test_hello_world(client):
   
 def test_zip_returns_documentation(client):
   response = client.get('/zipcode')
-  message = response.get_data(as_text=True)
+  data = response.json
   
-  assert len(message) >0
+  assert response.status_code == 200
+  assert 'message' in data
   # the documentation must conatin zipcode in it 
-  assert message.find('zipcode') > -1
+  assert data['message'].find('zipcode') > -1
