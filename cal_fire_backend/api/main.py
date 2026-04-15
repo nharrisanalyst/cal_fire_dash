@@ -74,7 +74,7 @@ def data_root():
         return jsonify(
             {
                 "message": "available data endpoints",
-                "avg": "averages (sum)  of data  across all zipcodes",
+                "avgdata": "averages (sum)  of data  across all zipcodes",
                 "zipcode": "/<int:zipcode>/ data for a specific zipcode"
             }
         ), 200
