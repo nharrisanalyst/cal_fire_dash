@@ -16,7 +16,7 @@ describe('test for <TextZipcode />', ()=>{
         <MemoryRouter >
             <TextZipcode />
         </MemoryRouter>)
-        const title = screen.getByText("Know. Insure.")
+        const title = screen.getByText("Analyze. Insure.")
         expect(title).toBeInTheDocument()
     })
     

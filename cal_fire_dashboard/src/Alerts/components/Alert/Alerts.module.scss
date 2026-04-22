@@ -1,0 +1,32 @@
+.alertAlert{
+  font-size: 1.6em;
+  font-weight:lighter;
+  display:flex;
+  gap:8px;
+  align-items: center;
+  
+  div{
+    width:10px;
+    height:10px;
+    // border: 0.5px solid black;
+    border-radius: 50%;
+    display: inline-block;
+    line-height: 1.6em;
+    margin: 0 auto;
+  }
+}
+
+
+.activeAlert{
+  color:rgb(233, 6, 6);
+  div{
+   background-color: rgb(233, 6, 6);
+  }
+}
+
+.inactiveAlert{
+  color:green;
+  div{
+   background-color: green;
+  }
+}
