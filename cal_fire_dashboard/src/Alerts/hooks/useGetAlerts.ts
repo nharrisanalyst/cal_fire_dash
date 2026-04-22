@@ -1,10 +1,12 @@
 import {useQuery} from '@tanstack/react-query';
 import {type AlertType, AlertFeatures} from '../types/alerts.types';
 
-type Zipcode = string | number
+type Zipcode = string | number;
 type EventFilter = 'Red Flag Warning' | 'Fire Weather Watch';
 
-
+type FireAlert = Omit<AlertType, 'event'> & {
+  event:EventFilter
+};
 
 
 // Promise for react query 
@@ -15,20 +17,24 @@ export const getAlerts = async (): Promise<AlertType[]>=>{
      const resp = await fetch('https://api.weather.gov/alerts/active');
      const alertGeoJSON = await resp.json();
      const parsedData = AlertFeatures.parse(alertGeoJSON)
-     return parsedData.features;
+     return parsedData.features.map(d=>d.properties);
 }
 
-// export const useGetAlerts =({zipcode}:Zipcode)=>{
-//   const {
-//     data:alerts,
-//     isloading,
-//     isError,
-//     error,
-//   } = useQuery({
-//     queryKey:['alerts'],
-//     queryFn:getAlerts,
-//   })
+//filters All the Alerts to only FireAlerts
+export const AlertsAdapter =(Alerts:AlertType[]):FireAlert[]=>{
+
+    const FireEvents:EventFilter[] = ['Red Flag Warning', 'Fire Weather Watch'] as const;
+    const isFireEvent = (event:string):event is EventFilter =>{
+      return FireEvents.includes(event as EventFilter)
+    }
+
+    const FireAlerts = Alerts.filter(
+      (d): d is FireAlert => isFireEvent(d.event)
+    )
+    
+    return FireAlerts;
+}
+
+ 
     
   
-
-// }
