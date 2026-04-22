@@ -5,6 +5,9 @@ export const AlertData = z.object({
   headline: z.string(),
   description: z.string(),
   instruction: z.string(),
+  geocode:z.object({
+    SAME:z.array(z.string()),
+  })
 })
 
 export const AlertDataFeature = z.object({
