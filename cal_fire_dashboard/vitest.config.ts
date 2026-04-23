@@ -7,6 +7,11 @@ export default mergeConfig(viteConfig, defineConfig({
     environment: 'jsdom',
     setupFiles: ['./tests/setup.ts'],
     exclude:["**/e2e/**", "**/node_modules/**", "**/dist/**"],
+    environmentOptions: {
+      jsdom: {
+        url: 'http://localhost'
+      }
+    }
   },
   resolve:{
     alias: {

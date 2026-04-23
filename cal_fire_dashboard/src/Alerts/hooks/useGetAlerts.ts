@@ -4,7 +4,7 @@ import {type AlertType, AlertFeatures} from '../types/alerts.types';
 type Zipcode = string | number;
 type EventFilter = 'Red Flag Warning' | 'Fire Weather Watch';
 
-type FireAlert = Omit<AlertType, 'event'> & {
+export type FireAlert = Omit<AlertType, 'event'> & {
   event:EventFilter
 };
 
