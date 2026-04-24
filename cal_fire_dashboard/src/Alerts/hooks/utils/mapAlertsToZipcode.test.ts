@@ -1,5 +1,6 @@
 import {test} from 'vitest';
 import { type FireAlert } from '../useGetAlerts'
+import { loadZipcodes } from './loadZipcodes/loadZipcodes';
 import {  mapAlertsToZipcode, 
           filterAlertsByCname,
           trimSAME
@@ -75,7 +76,8 @@ test('trim SAME data to match zipcode data', ()=>{
 
 
 test('mapAlertsTpZipcode takes in a list of Fire Alerts and returns only the ones that match the zipcode returns [] if no match', async ()=>{
-  const zipFireAlerts = await mapAlertsToZipcode("95677", fireData);
+  const zipcodes = await loadZipcodes()
+  const zipFireAlerts = mapAlertsToZipcode("95677", fireData, zipcodes);
   expect(zipFireAlerts).toStrictEqual([
       {
       event: "Red Flag Warning",

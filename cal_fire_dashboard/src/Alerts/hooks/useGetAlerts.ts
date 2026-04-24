@@ -1,7 +1,11 @@
+import {useEffect, useState} from 'react';
+import { mapAlertsToZipcode } from './utils/mapAlertsToZipcode';
+import { loadZipcodes, type ZipcodeType } from './utils/loadZipcodes/loadZipcodes';
 import {useQuery} from '@tanstack/react-query';
 import {type AlertType, AlertFeatures} from '../types/alerts.types';
 
-type Zipcode = string | number;
+
+
 type EventFilter = 'Red Flag Warning' | 'Fire Weather Watch';
 
 export type FireAlert = Omit<AlertType, 'event'> & {
@@ -35,6 +39,54 @@ export const AlertsAdapter =(Alerts:AlertType[]):FireAlert[]=>{
     return FireAlerts;
 }
 
+export const useGetAlerts = (zipcode:string)=>{
+ const [fireAlertsZip, setFireAlerts ] = useState<FireAlert[] |null>(null)
+ const [fireAlertsLoading, setFireAlertsLoading] = useState<boolean>(false);
+
+
+ const {
+  data:fireAlertsData,
+  isLoading: isLoadingAlerts,
+  isError: isErrorAlerts,
+  error: errorAlerts
+ } = useQuery({
+  queryKey:['alerts'],
+  queryFn:getAlerts,
+  select:(alerts)=>AlertsAdapter(alerts),
+ })
+
+
+
+ useEffect(()=>{
+
+  const setZipcodeData =async ()=>{
+    if(fireAlertsData){
+      setFireAlertsLoading(true);
+
+      const zipcodeData = await loadZipcodes();
+      const zipAlerts = mapAlertsToZipcode(zipcode,fireAlertsData, zipcodeData);
+
+      setFireAlerts(zipAlerts);
+      setFireAlertsLoading(false);
+    }
+  }
+
+  setZipcodeData();
+ },[fireAlertsData, zipcode])
+
+const isLoading = isLoadingAlerts || fireAlertsLoading;
+const data = fireAlertsZip
+const isError = isErrorAlerts;
+const error = errorAlerts
+
+ return {
+  data,
+  isLoading,
+  error,
+  isError
+ }
+
+}
  
     
   

@@ -1,5 +1,5 @@
 import { type FireAlert } from '../useGetAlerts'
-import { loadZipcodes } from './loadZipcodes/loadZipcodes';
+import { loadZipcodes, type ZipcodeType } from './loadZipcodes/loadZipcodes';
 
 export const filterAlertsByCname =(zipCnames:string[], alertCnames:string[]):boolean=>{
   // const intersect = set_1.intersection(set_2);   2027 emcascript feature
@@ -19,8 +19,8 @@ export const trimSAME =(SAME:string[]):string[]=>(
 
 
 
-export const mapAlertsToZipcode = async (zipcode:string, Alerts:FireAlert[]):Promise<FireAlert[]> =>{
-  const zipcodes =  await loadZipcodes();
+export const mapAlertsToZipcode = (zipcode:string, Alerts:FireAlert[], zipcodes:ZipcodeType):FireAlert[] =>{
+
   if(zipcodes[zipcode]===undefined) {
     throw new Error('zipcode supplied not found in zipcode json')
   }
