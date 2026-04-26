@@ -14,7 +14,6 @@ export const leafLeftCoordinates = (projInit:string, projTo:string, coords:Posit
 
 export const fixFeatureCordinates = (data:FeatureCollection<Geometry, GeoJsonProperties>, projInit:string, projTo:string):FeatureCollection<Geometry, GeoJsonProperties>=>{
     const features = data.features;
-    console.log('features here ', features)
     const featuresFiltered = features.filter(f=> f.geometry != null) // filter out nulls
     const correctedFeatures = featuresFiltered.map(f=>{
         if(f.geometry.type === 'Polygon'){

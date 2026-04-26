@@ -65,7 +65,6 @@ export const useGetAlerts = (zipcode:string)=>{
 
       const zipcodeData = await loadZipcodes();
       const zipAlerts = mapAlertsToZipcode(zipcode,fireAlertsData, zipcodeData);
-
       setFireAlerts(zipAlerts);
       setFireAlertsLoading(false);
     }

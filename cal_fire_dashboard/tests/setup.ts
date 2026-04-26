@@ -24,4 +24,10 @@ vi.stubGlobal('fetch', async(url:string)=>{
        ok:true
     } as Response 
   }
+  if (url === 'https://api.weather.gov/alerts/active'){
+    return {
+       json: async () => JSON.parse(readFileSync('public/json/active_alerts.geojson', 'utf-8')),
+       ok:true
+    } as Response 
+  }
 })

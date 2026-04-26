@@ -2,9 +2,9 @@ import * as z from "zod";
 
 export const AlertData = z.object({
   event: z.string(),
-  headline: z.string(),
+  headline: z.string().nullable(),
   description: z.string(),
-  instruction: z.string(),
+  instruction: z.string().nullable(),
   geocode:z.object({
     SAME:z.array(z.string()),
   })

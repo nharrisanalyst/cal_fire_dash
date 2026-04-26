@@ -1,5 +1,5 @@
 import { type FireAlert } from '../useGetAlerts'
-import { loadZipcodes, type ZipcodeType } from './loadZipcodes/loadZipcodes';
+import { type ZipcodeType } from './loadZipcodes/loadZipcodes';
 
 export const filterAlertsByCname =(zipCnames:string[], alertCnames:string[]):boolean=>{
   // const intersect = set_1.intersection(set_2);   2027 emcascript feature
