@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import { mapAlertsToZipcode } from './utils/mapAlertsToZipcode';
-import { loadZipcodes, type ZipcodeType } from './utils/loadZipcodes/loadZipcodes';
+import { loadZipcodes } from './utils/loadZipcodes/loadZipcodes';
 import {useQuery} from '@tanstack/react-query';
 import {type AlertType, AlertFeatures} from '../types/alerts.types';
 

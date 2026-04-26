@@ -42,7 +42,7 @@ const AlertMessage = ({zipcode}:AlertMessageProps)=>{
   const events = message.event
   const headline = message.headline;
   const description = message?.description??"";
-  const instruction = message?.description??"";
+  const instruction = message?.instruction??"";
 
   return( 
       <div role='fire-alert'>
