@@ -1,11 +1,10 @@
 .fireAlert{
   display:grid;
-  grid-template-columns: auto 1fr;
+  
   gap:22px;
   border: 1.5px solid #acabab;
   padding:16px;
   border-radius:16px;
-
     .activeAlertCont{
     display:flex;
   }
@@ -34,7 +33,11 @@
 
     .alertInstruction{
       font-weight: bold;
-    }
+    } 
  }
-
+ .alertButton{
+      &:hover{
+        cursor:pointer;
+      }
+    }
 }

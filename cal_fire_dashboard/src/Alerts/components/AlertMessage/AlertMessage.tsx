@@ -1,3 +1,4 @@
+import {useState} from 'react';
 import {useGetAlerts} from '../../hooks/useGetAlerts';
 import Alert from '../Alert/Alert';
 import { removeEventFromHeadline } from './utilis/removeEventFromHeadline';
@@ -16,7 +17,11 @@ type Message = {
   instruction?:string;
 }
 
+type AlertSize ='FullyOpen' | 'Truncated';
+
 const AlertMessage = ({zipcode}:AlertMessageProps)=>{
+  const[alertSize, setAlertSize] = useState<AlertSize>('Truncated');
+
   const {
     data:fireAlerts,
     isLoading,
@@ -26,7 +31,7 @@ const AlertMessage = ({zipcode}:AlertMessageProps)=>{
 
   if(isError || error){
     <div>
-        <span>{error?.message}</span>
+        <span>{error.message}</span>
         <button>retry</button>
       </div>
   }
@@ -45,7 +50,8 @@ const AlertMessage = ({zipcode}:AlertMessageProps)=>{
   const headline = removeEventFromHeadline(events,message.headline);
   const description = message?.description??"";
   const instruction = message?.instruction??"";
-
+ 
+  const buttonText = alertSize === 'Truncated'?'Read Full Alert Warning':'Read Less';
   return( 
       <div className={styles.fireAlert} role='fire-alert'>
         <div className={styles.activeAlertCont}>
@@ -58,7 +64,7 @@ const AlertMessage = ({zipcode}:AlertMessageProps)=>{
           <div className={styles.alertInstruction} data-testId='alert-instruction-321'>{instruction}</div>
         </div>
 
-
+          <button className={styles.alertButton}>{buttonText}</button>    
       </div>
   )
 
