@@ -1,0 +1,40 @@
+.fireAlert{
+  display:grid;
+  grid-template-columns: auto 1fr;
+  gap:22px;
+  border: 1.5px solid #acabab;
+  padding:16px;
+  border-radius:16px;
+
+    .activeAlertCont{
+    display:flex;
+  }
+
+  .alertInfo{
+       font-size: 18px;
+      font-weight:400;
+      line-height: 24px;
+      
+    .alertEvent{
+      font-size: 24px;
+      font-weight: bold;
+      
+    }
+
+    .alertHeadline{
+     font-weight: bold;
+    }
+    .alertDescription{
+      white-space: pre-wrap;
+      display:none;
+      margin-bottom:12px;
+      margin-top: 12px; 
+      font-size:18px;
+    }
+
+    .alertInstruction{
+      font-weight: bold;
+    }
+ }
+
+}

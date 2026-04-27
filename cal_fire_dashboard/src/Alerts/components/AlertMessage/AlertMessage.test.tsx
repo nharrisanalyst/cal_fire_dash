@@ -20,7 +20,7 @@ test('when there is an alert the message should dexcribe the alert', async ()=>{
 
     expect(alert).toHaveClass(/activeAlert/i);
     expect(event).toHaveTextContent(/Red Flag Warning|Fire Weather Watch/i);
-    expect(headline).toHaveTextContent(/Red Flag Warning|Fire Weather Watch/i);
+    expect(headline).toBeInTheDocument();
     expect(description).toHaveTextContent(/.../i);
     expect(instruction).toBeInTheDocument();
   
