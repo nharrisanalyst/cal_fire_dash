@@ -29,11 +29,18 @@ const AlertMessage = ({zipcode}:AlertMessageProps)=>{
     error
   } = useGetAlerts(zipcode);
 
-  if(isError || error){
-    <div>
-        <span>{error.message}</span>
+  const handleReadButton =()=>{
+     const newAlertSize = alertSize === 'Truncated'?'FullyOpen':'Truncated';
+     setAlertSize(newAlertSize);
+  }
+
+  if(isError  || error){
+       return(
+       <div>
+        <span>There was an Error Loading Alert Data</span>
         <button>retry</button>
       </div>
+    )
   }
 
   if(isLoading || !fireAlerts){
@@ -52,19 +59,20 @@ const AlertMessage = ({zipcode}:AlertMessageProps)=>{
   const instruction = message?.instruction??"";
  
   const buttonText = alertSize === 'Truncated'?'Read Full Alert Warning':'Read Less';
+  const buttonShowClass = alertSize === 'Truncated'?`${styles.hiddenDescription}`:`${styles.showDescription}`;
   return( 
       <div className={styles.fireAlert} role='fire-alert'>
         <div className={styles.activeAlertCont}>
           <Alert status={activeAlert} />
         </div>
         <div className={styles.alertInfo}>
-          <div className={styles.alertEvent} data-testId='alert-event-321'>{events}</div>
-          <div className={styles.alertHeadline} data-testId='alert-headline-321'>{headline}</div>
-          <div className={styles.alertDescription}  data-testId='alert-description-321'>{description}</div>
-          <div className={styles.alertInstruction} data-testId='alert-instruction-321'>{instruction}</div>
+          <div className={styles.alertEvent} data-testid='alert-event-321'>{events}</div>
+          <div className={styles.alertHeadline} data-testid='alert-headline-321'>{headline}</div>
+          <div className={`${styles.alertDescription} ${buttonShowClass}`}  data-testid='alert-description-321'>{description}</div>
+          <div className={styles.alertInstruction} data-testid='alert-instruction-321'>{instruction}</div>
         </div>
 
-          <button className={styles.alertButton}>{buttonText}</button>    
+            <button className={styles.alertButton} onClick={handleReadButton}>{buttonText}</button>    
       </div>
   )
 

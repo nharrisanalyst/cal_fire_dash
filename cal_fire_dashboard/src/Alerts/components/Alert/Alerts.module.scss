@@ -13,6 +13,7 @@
     display: inline-block;
     line-height: 1.6em;
     margin: 0 auto;
+    animation: blinker linear 3s infinite;
   }
 }
 
@@ -20,13 +21,19 @@
 .activeAlert{
   color:rgb(233, 6, 6);
   div{
-   background-color: rgb(233, 6, 6);
+   border: 2px solid rgb(233, 6, 6);
   }
 }
 
 .inactiveAlert{
   color:green;
   div{
-   background-color: green;
+   border: 2px solid green;
+  }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
   }
 }

@@ -1,5 +1,5 @@
 import {test, vi} from 'vitest'
-import {screen} from '@testing-library/react';
+import {screen, act} from '@testing-library/react';
 import {render} from '../../../../tests/test_utilis/renderWithQueryClient'
 import AlertMessage from './AlertMessage';
 
@@ -7,16 +7,12 @@ import alertI18n from '../../i18n/Alerts.i18n.json';
 
 test('when there is an alert the message should dexcribe the alert', async ()=>{
   render(<AlertMessage zipcode="80435" />)
-  
-  await vi.waitFor(()=>{
-    expect(screen.getByTestId('alert-event-321')).toBeInTheDocument();
-  })
 
-    const alert = screen.getByTestId('alert-icon-321')
-    const event = screen.getByTestId('alert-event-321');
-    const headline = screen.getByTestId('alert-headline-321');
-    const description = screen.getByTestId('alert-description-321');
-    const instruction = screen.getByTestId('alert-instruction-321');
+    const alert = await screen.findByTestId('alert-icon-321')
+    const event = await screen.findByTestId('alert-event-321');
+    const headline = await screen.findByTestId('alert-headline-321');
+    const description = await screen.findByTestId('alert-description-321');
+    const instruction = await screen.findByTestId('alert-instruction-321');
 
     expect(alert).toHaveClass(/activeAlert/i);
     expect(event).toHaveTextContent(/Red Flag Warning|Fire Weather Watch/i);
@@ -28,19 +24,29 @@ test('when there is an alert the message should dexcribe the alert', async ()=>{
 })
 
 test('when there are no alerts a no alert message is shown', async ()=>{
-  render(<AlertMessage zipcode="95677" />)
-
-  await vi.waitFor(()=>{
-   expect(screen.getByTestId('alert-event-321')).toBeInTheDocument();
-  })
-
-   const alert = screen.getByTestId('alert-icon-321');
-    const event = screen.getByTestId('alert-event-321'); 
-    const headline = screen.getByTestId('alert-headline-321');
+    render(<AlertMessage zipcode="95677" />)
+  
+   
+   const event = await screen.findByText(alertI18n.alerts.noWarnings.event);
+   const alert = await screen.findByTestId('alert-icon-321'); 
+    const headline = await screen.findByText(alertI18n.alerts.noWarnings.headline);
 
     expect(alert).toHaveClass(/inactiveAlert/i);
-    expect(event).toHaveTextContent(alertI18n.alerts.noWarnings.event);
-    expect(headline).toHaveTextContent(alertI18n.alerts.noWarnings.headline);
+    expect(event).toBeInTheDocument();
+    expect(headline).toBeInTheDocument();
   
-  
+})
+
+test('the Read Full Alert Warning to be in the document and when pressed the full alert is there',async ()=>{
+  act(()=>{
+  render(<AlertMessage zipcode="80435" />);
+  })
+
+  const button = await screen.findByRole('button', {name:/read/i})
+  const description = await screen.findByTestId('alert-description-321');
+  expect(description).toHaveClass(/hiddenDescription/i)
+  button.click();
+  const description_2 = await screen.findByTestId('alert-description-321');
+  expect(description_2).toHaveClass(/showDescription/i)
+
 })
