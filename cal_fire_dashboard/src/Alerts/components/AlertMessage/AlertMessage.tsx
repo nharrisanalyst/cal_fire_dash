@@ -51,8 +51,9 @@ const AlertMessage = ({zipcode}:AlertMessageProps)=>{
     )
   }
 
-  const message:Message = fireAlerts.length>0?fireAlerts[0]: alertI18n.alerts.noWarnings;
-  const activeAlert = fireAlerts.length>0?'active' : 'inactive';
+  const foundFireAlerts:boolean = fireAlerts.length>0;
+  const message:Message = foundFireAlerts?fireAlerts[0]: alertI18n.alerts.noWarnings;
+  const activeAlert = foundFireAlerts?'active' : 'inactive';
   const events = message.event
   const headline = removeEventFromHeadline(events,message.headline);
   const description = message?.description??"";
@@ -72,7 +73,7 @@ const AlertMessage = ({zipcode}:AlertMessageProps)=>{
           <div className={styles.alertInstruction} data-testid='alert-instruction-321'>{instruction}</div>
         </div>
 
-            <button className={styles.alertButton} onClick={handleReadButton}>{buttonText}</button>    
+            {foundFireAlerts?(<button className={styles.alertButton} onClick={handleReadButton}>{buttonText}</button>):null}    
       </div>
   )
 

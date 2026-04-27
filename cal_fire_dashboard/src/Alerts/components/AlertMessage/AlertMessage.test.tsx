@@ -50,3 +50,9 @@ test('the Read Full Alert Warning to be in the document and when pressed the ful
   expect(description_2).toHaveClass(/showDescription/i)
 
 })
+
+test('if there are no alerts there should be no Red Full Alert Warning', async()=>{
+    render(<AlertMessage zipcode="95677" />)
+    await screen.findByText(/No Active Alerts/i);
+    expect(screen.queryByRole('button', {name:/read/i})).not.toBeInTheDocument()
+})
