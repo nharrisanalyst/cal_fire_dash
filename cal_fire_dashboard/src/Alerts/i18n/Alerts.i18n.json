@@ -1,0 +1,8 @@
+{
+  "alerts":{
+    "noWarnings":{
+      "event":"No Active Alerts",
+      "headline":"There are No Active Red Flag Warnings, Fire Weather Watch, or Fire Warnings for this Zipcode."
+    }
+  }
+}

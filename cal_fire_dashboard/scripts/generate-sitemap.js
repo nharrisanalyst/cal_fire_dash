@@ -51,8 +51,7 @@ async function generateSitemap() {
                 .join("\n")}
             </urlset>`;
     
-    fs.writeFileSync("public/sitemap.xml", xml);
-    console.log("sitemap.xml generated");            
+    fs.writeFileSync("public/sitemap.xml", xml);           
     
 }
 
