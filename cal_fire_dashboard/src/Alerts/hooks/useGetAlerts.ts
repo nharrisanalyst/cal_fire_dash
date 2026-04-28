@@ -6,7 +6,7 @@ import {type AlertType, AlertFeatures} from '../types/alerts.types';
 
 
 
-type EventFilter = 'Red Flag Warning' | 'Fire Weather Watch';
+type EventFilter = 'Red Flag Warning' | 'Fire Weather Watch'| "Fire Warning";
 
 export type FireAlert = Omit<AlertType, 'event'> & {
   event:EventFilter
@@ -27,7 +27,7 @@ export const getAlerts = async (): Promise<AlertType[]>=>{
 //filters All the Alerts to only FireAlerts
 export const AlertsAdapter =(Alerts:AlertType[]):FireAlert[]=>{
 
-    const FireEvents:EventFilter[] = ['Red Flag Warning', 'Fire Weather Watch'] as const;
+    const FireEvents:EventFilter[] = ['Red Flag Warning', 'Fire Weather Watch',  "Fire Warning"] as const;
     const isFireEvent = (event:string):event is EventFilter =>{
       return FireEvents.includes(event as EventFilter)
     }
@@ -53,6 +53,7 @@ export const useGetAlerts = (zipcode:string)=>{
   queryKey:['alerts'],
   queryFn:getAlerts,
   select:(alerts)=>AlertsAdapter(alerts),
+  refetchInterval: 60000,
  })
 
 

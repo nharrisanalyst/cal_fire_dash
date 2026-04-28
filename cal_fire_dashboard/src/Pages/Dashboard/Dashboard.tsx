@@ -4,6 +4,7 @@ import { useGetDashboardData } from '../../hooks/useGetDashboardData';
 import { useSearchSuggestion } from '../../hooks/useSeachSuggestion'
 import FireDash from '../../Components/Organisms/FireDash/FireDash';
 import TitleAndMeta from './TitleAndMeta/TitleAndMeta';
+import AlertMessage from '../../Alerts/components/AlertMessage/AlertMessage';
 import styles from './dashbaordPage.module.scss'
 
 
@@ -34,6 +35,10 @@ const DashboardPage =()=>{
                 state='California'
             />
             <h1 className={styles.title} > {`${zipCity}, CA`} </h1>
+            <div className={styles.dashLive}>
+            <div className={styles.titleUnder} > Live Fire Alerts  </div>
+            <AlertMessage zipcode={zipcode} />
+            </div>
             <div className={styles.titleUnder} > Fire Risk Data </div>
             <div className={styles.dashboard} >
               <FireDash {...{...data, zipcode:zipcode}} />

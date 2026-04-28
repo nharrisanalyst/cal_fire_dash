@@ -12,9 +12,12 @@ interface AlertMessageProps{
 
 type Message = {
   event:string;
-  headline:string;
+  headline:string |null;
   description?:string;
-  instruction?:string;
+  instruction?:string | null;
+  geocode?:{
+    SAME:string[];
+  }
 }
 
 type AlertSize ='FullyOpen' | 'Truncated';
@@ -36,7 +39,7 @@ const AlertMessage = ({zipcode}:AlertMessageProps)=>{
 
   if(isError  || error){
        return(
-       <div>
+       <div className={styles.fireAlert}>
         <span>There was an Error Loading Alert Data</span>
         <button>retry</button>
       </div>
@@ -45,7 +48,7 @@ const AlertMessage = ({zipcode}:AlertMessageProps)=>{
 
   if(isLoading || !fireAlerts){
     return(
-      <div>
+      <div className={styles.fireAlert}>
         <span>...Loading</span>
       </div>
     )
@@ -54,13 +57,15 @@ const AlertMessage = ({zipcode}:AlertMessageProps)=>{
   const foundFireAlerts:boolean = fireAlerts.length>0;
   const message:Message = foundFireAlerts?fireAlerts[0]: alertI18n.alerts.noWarnings;
   const activeAlert = foundFireAlerts?'active' : 'inactive';
-  const events = message.event
-  const headline = removeEventFromHeadline(events,message.headline);
+  const events = `${message.event} Affecting ${zipcode}`
+  const headline =message?.headline??"";
+  const headline_formatted = removeEventFromHeadline(events,headline);
   const description = message?.description??"";
   const instruction = message?.instruction??"";
  
   const buttonText = alertSize === 'Truncated'?'Read Full Alert Warning':'Read Less';
   const buttonShowClass = alertSize === 'Truncated'?`${styles.hiddenDescription}`:`${styles.showDescription}`;
+
   return( 
       <div className={styles.fireAlert} role='fire-alert'>
         <div className={styles.activeAlertCont}>
@@ -68,7 +73,7 @@ const AlertMessage = ({zipcode}:AlertMessageProps)=>{
         </div>
         <div className={styles.alertInfo}>
           <div className={styles.alertEvent} data-testid='alert-event-321'>{events}</div>
-          <div className={styles.alertHeadline} data-testid='alert-headline-321'>{headline}</div>
+          <div className={styles.alertHeadline} data-testid='alert-headline-321'>{headline_formatted}</div>
           <div className={`${styles.alertDescription} ${buttonShowClass}`}  data-testid='alert-description-321'>{description}</div>
           <div className={styles.alertInstruction} data-testid='alert-instruction-321'>{instruction}</div>
         </div>

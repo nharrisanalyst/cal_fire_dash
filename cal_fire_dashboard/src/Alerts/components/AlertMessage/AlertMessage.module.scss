@@ -1,10 +1,18 @@
+@use '../../../assets/scss' as *;
+
 .fireAlert{
   display:grid;
   
   gap:22px;
-  border: 1.5px solid #acabab;
+  border: 1.5px solid #dbdada;
   padding:16px;
   border-radius:16px;
+  line-height: 26px;
+  
+  @media (max-width: $breakpoint-md){
+    line-height: 20px;
+  }
+
     .activeAlertCont{
     display:flex;
   }
@@ -12,16 +20,23 @@
   .alertInfo{
        font-size: 18px;
       font-weight:400;
-      line-height: 24px;
+      @media (max-width: $breakpoint-md){
+      font-size:14px;
+      }
       
     .alertEvent{
       font-size: 24px;
       font-weight: bold;
-      
+      @media (max-width: $breakpoint-md){
+      font-size:18px;
+      }
     }
 
     .alertHeadline{
      font-weight: bold;
+     @media (max-width: $breakpoint-md){
+      line-height: 16px;
+      }
     }
     .alertDescription{
       white-space: pre-wrap;

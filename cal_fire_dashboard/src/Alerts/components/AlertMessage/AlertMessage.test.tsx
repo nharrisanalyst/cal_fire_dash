@@ -1,5 +1,6 @@
-import {test, vi} from 'vitest'
-import {screen, act} from '@testing-library/react';
+import {test } from 'vitest'
+import {screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import {render} from '../../../../tests/test_utilis/renderWithQueryClient'
 import AlertMessage from './AlertMessage';
 
@@ -27,9 +28,9 @@ test('when there are no alerts a no alert message is shown', async ()=>{
     render(<AlertMessage zipcode="95677" />)
   
    
-   const event = await screen.findByText(alertI18n.alerts.noWarnings.event);
+   const event = await screen.findByText(/No Active Alerts/i);
    const alert = await screen.findByTestId('alert-icon-321'); 
-    const headline = await screen.findByText(alertI18n.alerts.noWarnings.headline);
+    const headline = await screen.findByText(/There are No Active/i);
 
     expect(alert).toHaveClass(/inactiveAlert/i);
     expect(event).toBeInTheDocument();
@@ -38,15 +39,14 @@ test('when there are no alerts a no alert message is shown', async ()=>{
 })
 
 test('the Read Full Alert Warning to be in the document and when pressed the full alert is there',async ()=>{
-  act(()=>{
   render(<AlertMessage zipcode="80435" />);
-  })
+
 
   const button = await screen.findByRole('button', {name:/read/i})
   const description = await screen.findByTestId('alert-description-321');
   expect(description).toHaveClass(/hiddenDescription/i)
-  button.click();
-  const description_2 = await screen.findByTestId('alert-description-321');
+  await userEvent.click(button);
+  const description_2 = screen.getByTestId('alert-description-321');
   expect(description_2).toHaveClass(/showDescription/i)
 
 })
