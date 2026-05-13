@@ -1,25 +1,25 @@
-import { beforeEach, describe, vi, type Mocked, test } from 'vitest'
-import axios from "axios";
-import { render, screen, waitFor } from '@testing-library/react'
-import DashboardPage from './Dashboard'
-import { Routes, Route, MemoryRouter } from "react-router-dom";
+// import { beforeEach, describe, vi, type Mocked, test } from 'vitest'
+// import axios from "axios";
+// import { render, screen, waitFor } from '@testing-library/react'
+// import DashboardPage from './Dashboard'
+// import { Routes, Route, MemoryRouter } from "react-router-dom";
 
-import avgData from '../../__mocks__/avgMock.json'
-import mockData from '../../__mocks__/zipcodeMock.json'
+// import avgData from '../../__mocks__/avgMock.json'
+// import mockData from '../../__mocks__/zipcodeMock.json'
 
 
 
-vi.mock("axios", () => {
-  const get = vi.fn();
-  return {
-    default: {
-      get,
-      create: vi.fn(() => ({
-        get,
-      })),
-    },
-  };
-});
+// vi.mock("axios", () => {
+//   const get = vi.fn();
+//   return {
+//     default: {
+//       get,
+//       create: vi.fn(() => ({
+//         get,
+//       })),
+//     },
+//   };
+// });
 
 test('pass', ()=>{
   expect(1).toBe(1);

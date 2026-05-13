@@ -10,7 +10,13 @@ import styles from './dashbaordPage.module.scss'
 
 const DashboardPage =()=>{
     const { zipcode } = useParams();
-    const [ data, loading ] = useGetDashboardData(zipcode);
+
+    const {
+        data,
+        isLoading,
+        isError,
+        error
+    } = useGetDashboardData(zipcode);
 
     const [zipCity] = useSearchSuggestion({suggestion:Number(zipcode)})
     const [zip, city] = useMemo(()=>{
@@ -24,10 +30,11 @@ const DashboardPage =()=>{
         return [null,null]
     },[zipCity])
     
-    if(loading==='Loading Data') return (<div>...Loading</div>)
-    if(loading==='Data Err') return (<div>Error Loading Data</div>)
+    if(isLoading) return (<div>...Loading</div>)
+    if(isError && error instanceof Error) return (<div>Error Loading Data {error.message} </div>)
+    if(isError) return (<div>Error Loading Data</div>)
     if(!zipcode)return (<div>no zipcode provided</div>)
-    if(loading==='Data Loaded' && zipcode && zipCity && zip && city) return(
+    if(!isLoading && zipcode && zipCity && zip && city) return(
         <div className={styles.dashboardPage}>
             <TitleAndMeta
                 zip={zip}

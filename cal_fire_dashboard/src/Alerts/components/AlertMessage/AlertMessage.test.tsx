@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event';
 import {render} from '../../../../tests/test_utilis/renderWithQueryClient'
 import AlertMessage from './AlertMessage';
 
-import alertI18n from '../../i18n/Alerts.i18n.json';
 
 test('when there is an alert the message should dexcribe the alert', async ()=>{
   render(<AlertMessage zipcode="80435" />)
