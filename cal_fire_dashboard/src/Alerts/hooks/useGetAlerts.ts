@@ -43,7 +43,6 @@ export const useGetAlerts = (zipcode:string)=>{
  const [fireAlertsZip, setFireAlerts ] = useState<FireAlert[] |null>(null)
  const [fireAlertsLoading, setFireAlertsLoading] = useState<boolean>(false);
 
-
  const {
   data:fireAlertsData,
   isLoading: isLoadingAlerts,
@@ -55,8 +54,6 @@ export const useGetAlerts = (zipcode:string)=>{
   select:(alerts)=>AlertsAdapter(alerts),
   refetchInterval: 60000,
  })
-
-
 
  useEffect(()=>{
 
